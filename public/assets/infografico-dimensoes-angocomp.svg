@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2C59" />
+      <stop offset="100%" stop-color="#071326" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0F2C59" stop-opacity="0.7" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+
+  <!-- Header -->
+  <text x="600" y="65" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="700" fill="#F59E0B" letter-spacing="4">PROJECTO MUKANDA • ESTRUTURA CIENTÍFICA</text>
+  <text x="600" y="110" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="1">Quadro Angolano de Competências Digitais (AngoComp)</text>
+  <text x="600" y="145" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="400" fill="#94A3B8">As 5 Áreas Estruturantes de Competência Adaptadas à Realidade Sociocultural Angolana</text>
+
+  <!-- 5 Dimensões Cards (Columns) -->
+  
+  <!-- DIMENSÃO 1 -->
+  <g transform="translate(60, 180)" filter="url(#cardShadow)">
+    <rect width="200" height="460" rx="16" fill="url(#cardGrad)" stroke="#FF6B35" stroke-width="2" />
+    <circle cx="100" cy="60" r="32" fill="#FF6B35" fill-opacity="0.2" stroke="#FF6B35" stroke-width="2" />
+    <text x="100" y="68" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#FF6B35">01</text>
+    <text x="100" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Informação &amp;</text>
+    <text x="100" y="155" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Dados</text>
+    <rect x="30" y="175" width="140" height="2" fill="#FF6B35" />
+    <text x="100" y="210" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#FDBA74">• Navegação Crítica</text>
+    <text x="100" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Filtragem de Fake News</text>
+    <text x="100" y="270" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Gestão e Armazenamento</text>
+    <text x="100" y="300" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Avaliação de Fontes Locais</text>
+    <rect x="25" y="390" width="150" height="40" rx="8" fill="#FF6B35" fill-opacity="0.2" />
+    <text x="100" y="415" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#FF8A50">ILDA DIM-1</text>
+  </g>
+
+  <!-- DIMENSÃO 2 -->
+  <g transform="translate(280, 180)" filter="url(#cardShadow)">
+    <rect width="200" height="460" rx="16" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="2" />
+    <circle cx="100" cy="60" r="32" fill="#38BDF8" fill-opacity="0.2" stroke="#38BDF8" stroke-width="2" />
+    <text x="100" y="68" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#38BDF8">02</text>
+    <text x="100" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Comunicação &amp;</text>
+    <text x="100" y="155" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Colaboração</text>
+    <rect x="30" y="175" width="140" height="2" fill="#38BDF8" />
+    <text x="100" y="210" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#BAE6FD">• Interacção Digital Cívica</text>
+    <text x="100" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Partilha Ética de Dados</text>
+    <text x="100" y="270" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Netiqueta &amp; Comunidade</text>
+    <text x="100" y="300" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Gestão da Identidade Digital</text>
+    <rect x="25" y="390" width="150" height="40" rx="8" fill="#38BDF8" fill-opacity="0.2" />
+    <text x="100" y="415" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#38BDF8">ILDA DIM-2</text>
+  </g>
+
+  <!-- DIMENSÃO 3 -->
+  <g transform="translate(500, 180)" filter="url(#cardShadow)">
+    <rect width="200" height="460" rx="16" fill="url(#cardGrad)" stroke="#F59E0B" stroke-width="2" />
+    <circle cx="100" cy="60" r="32" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2" />
+    <text x="100" y="68" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#F59E0B">03</text>
+    <text x="100" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Criação de</text>
+    <text x="100" y="155" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Conteúdo Digital</text>
+    <rect x="30" y="175" width="140" height="2" fill="#F59E0B" />
+    <text x="100" y="210" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#FDE68A">• Produção Multimédia</text>
+    <text x="100" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Modificação e Integração</text>
+    <text x="100" y="270" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Direitos de Autor e Licenças</text>
+    <text x="100" y="300" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Pensamento Algorítmico</text>
+    <rect x="25" y="390" width="150" height="40" rx="8" fill="#F59E0B" fill-opacity="0.2" />
+    <text x="100" y="415" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#F59E0B">ILDA DIM-3</text>
+  </g>
+
+  <!-- DIMENSÃO 4 -->
+  <g transform="translate(720, 180)" filter="url(#cardShadow)">
+    <rect width="200" height="460" rx="16" fill="url(#cardGrad)" stroke="#10B981" stroke-width="2" />
+    <circle cx="100" cy="60" r="32" fill="#10B981" fill-opacity="0.2" stroke="#10B981" stroke-width="2" />
+    <text x="100" y="68" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#10B981">04</text>
+    <text x="100" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Segurança &amp;</text>
+    <text x="100" y="155" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Privacidade</text>
+    <rect x="30" y="175" width="140" height="2" fill="#10B981" />
+    <text x="100" y="210" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#A7F3D0">• Protecção de Dispositivos</text>
+    <text x="100" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Privacidade de Dados Pessoais</text>
+    <text x="100" y="270" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Saúde &amp; Bem-Estar Digital</text>
+    <text x="100" y="300" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Prevenção de Burla Electrónica</text>
+    <rect x="25" y="390" width="150" height="40" rx="8" fill="#10B981" fill-opacity="0.2" />
+    <text x="100" y="415" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#10B981">ILDA DIM-4</text>
+  </g>
+
+  <!-- DIMENSÃO 5 -->
+  <g transform="translate(940, 180)" filter="url(#cardShadow)">
+    <rect width="200" height="460" rx="16" fill="url(#cardGrad)" stroke="#A855F7" stroke-width="2" />
+    <circle cx="100" cy="60" r="32" fill="#A855F7" fill-opacity="0.2" stroke="#A855F7" stroke-width="2" />
+    <text x="100" y="68" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#A855F7">05</text>
+    <text x="100" y="130" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Resolução de</text>
+    <text x="100" y="155" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Problemas Locais</text>
+    <rect x="30" y="175" width="140" height="2" fill="#A855F7" />
+    <text x="100" y="210" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#E9D5FF">• Solução de Falhas Técnicas</text>
+    <text x="100" y="240" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Adaptação a Conectividade Fraca</text>
+    <text x="100" y="270" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Uso Criativo de Tecnologias</text>
+    <text x="100" y="300" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" font-weight="400" fill="#CBD5E1">• Auto-Aprendizagem Digital</text>
+    <rect x="25" y="390" width="150" height="40" rx="8" fill="#A855F7" fill-opacity="0.2" />
+    <text x="100" y="415" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#A855F7">ILDA DIM-5</text>
+  </g>
+</svg>

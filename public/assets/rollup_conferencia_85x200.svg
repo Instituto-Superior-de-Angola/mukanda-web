@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 2000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rollBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#071326" />
+      <stop offset="25%" stop-color="#0F2C59" />
+      <stop offset="75%" stop-color="#0F2C59" />
+      <stop offset="100%" stop-color="#040D1B" />
+    </linearGradient>
+    <linearGradient id="rollTerracotta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </linearGradient>
+    <linearGradient id="rollGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#rollBg)" />
+
+  <!-- Top Institutional Bar -->
+  <g transform="translate(60, 60)">
+    <text x="0" y="30" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="700" fill="#F59E0B" letter-spacing="4">ACADEMIA DE CIÊNCIAS SOCIAIS E TECNOLOGIAS</text>
+    <text x="0" y="55" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#94A3B8">ACITE • Instituto Superior de Angola</text>
+    <line x1="0" y1="80" x2="730" y2="80" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="1" />
+  </g>
+
+  <!-- Big Central Icon & Title -->
+  <g transform="translate(325, 200) scale(0.40)">
+    <path d="M 250 80 C 175 80, 105 140, 105 215 C 105 290, 170 340, 230 385 L 250 400 L 250 330 C 205 295, 170 260, 170 215 C 170 175, 205 145, 250 145 Z" fill="url(#rollTerracotta)" />
+    <path d="M 250 80 C 325 80, 395 140, 395 215 C 395 290, 330 340, 270 385 L 250 400 L 250 330 C 295 295, 330 260, 330 215 C 330 175, 295 145, 250 145 Z" fill="#38BDF8" />
+    <polygon points="250,155 310,230 250,305 190,230" fill="url(#rollGold)" />
+    <circle cx="250" cy="230" r="14" fill="#0F2C59" stroke="#FFFFFF" stroke-width="4" />
+    <circle cx="250" cy="80" r="12" fill="url(#rollGold)" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="105" cy="215" r="11" fill="url(#rollTerracotta)" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="395" cy="215" r="11" fill="#38BDF8" stroke="#FFFFFF" stroke-width="3" />
+    <circle cx="250" cy="400" r="12" fill="#10B981" stroke="#FFFFFF" stroke-width="3" />
+  </g>
+
+  <g text-anchor="middle">
+    <text x="425" y="440" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="700" fill="#FF6B35" letter-spacing="6">PROJECTO</text>
+    <text x="425" y="525" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="900" fill="#FFFFFF" letter-spacing="4">MUKANDA</text>
+    <rect x="225" y="555" width="400" height="4" rx="2" fill="url(#rollGold)" />
+    
+    <text x="425" y="605" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="700" fill="#FDE047">Quadro Angolano de</text>
+    <text x="425" y="640" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="700" fill="#FDE047">Competências Digitais</text>
+    <text x="425" y="680" font-family="'Inter', sans-serif" font-size="16" font-weight="500" fill="#94A3B8">AngoComp • ILDA</text>
+  </g>
+
+  <!-- 4 Feature Cards Vertical Stack -->
+  <g transform="translate(60, 740)">
+    <!-- Feature 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="730" height="150" rx="14" fill="#FFFFFF" fill-opacity="0.06" stroke="#FF6B35" stroke-width="1.2" />
+      <circle cx="70" cy="75" r="32" fill="#FF6B35" fill-opacity="0.2" />
+      <text x="70" y="85" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="900" fill="#FF6B35">01</text>
+      <text x="130" y="60" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">Diagnóstico Científico &amp; Psicometria</text>
+      <text x="130" y="90" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">Inquérito nacional de base (N=1.500) e adaptação psicométrica</text>
+      <text x="130" y="112" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">rigorosa baseada no DigComp 2.2 da União Europeia.</text>
+    </g>
+
+    <!-- Feature 2 -->
+    <g transform="translate(0, 175)">
+      <rect width="730" height="150" rx="14" fill="#FFFFFF" fill-opacity="0.06" stroke="#F59E0B" stroke-width="1.2" />
+      <circle cx="70" cy="75" r="32" fill="#F59E0B" fill-opacity="0.2" />
+      <text x="70" y="85" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="900" fill="#F59E0B">02</text>
+      <text x="130" y="60" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">Certificação de 2.500 Cidadãos</text>
+      <text x="130" y="90" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">Capacitação prática e certificação em 3 províncias piloto:</text>
+      <text x="130" y="112" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#FDE68A">Luanda (Metropolitana) • Huíla (Urbano) • Uíge (Rural)</text>
+    </g>
+
+    <!-- Feature 3 -->
+    <g transform="translate(0, 350)">
+      <rect width="730" height="150" rx="14" fill="#FFFFFF" fill-opacity="0.06" stroke="#38BDF8" stroke-width="1.2" />
+      <circle cx="70" cy="75" r="32" fill="#38BDF8" fill-opacity="0.2" />
+      <text x="70" y="85" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="900" fill="#38BDF8">03</text>
+      <text x="130" y="60" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">120 Formadores Multiplicadores</text>
+      <text x="130" y="90" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">Formação de professores, instrutores e líderes comunitários</text>
+      <text x="130" y="112" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">garantindo sustentabilidade e escala contínua.</text>
+    </g>
+
+    <!-- Feature 4 -->
+    <g transform="translate(0, 525)">
+      <rect width="730" height="150" rx="14" fill="#FFFFFF" fill-opacity="0.06" stroke="#10B981" stroke-width="1.2" />
+      <circle cx="70" cy="75" r="32" fill="#10B981" fill-opacity="0.2" />
+      <text x="70" y="85" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="900" fill="#10B981">04</text>
+      <text x="130" y="60" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="800" fill="#FFFFFF">ILDA &amp; Transferência de Políticas</text>
+      <text x="130" y="90" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">Criação do Índice de Literacia Digital de Angola e transferência</text>
+      <text x="130" y="112" font-family="'Inter', sans-serif" font-size="14" font-weight="400" fill="#CBD5E1">institucional definitiva para o MESCTI e o INE.</text>
+    </g>
+  </g>
+
+  <!-- Bottom Details & Contact -->
+  <g transform="translate(60, 1530)">
+    <rect width="730" height="340" rx="16" fill="#0A192F" stroke="#FFFFFF" stroke-opacity="0.15" />
+    
+    <text x="50" y="60" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">Informações &amp; Parcerias Científicas</text>
+    <text x="50" y="95" font-family="'Inter', sans-serif" font-size="15" font-weight="400" fill="#CBD5E1">Investigador Principal: Eng. Benone Marcos, PhD</text>
+    <text x="50" y="125" font-family="'Inter', sans-serif" font-size="15" font-weight="400" fill="#CBD5E1">E-mail: investigacao@acite.ao / bmarcos@acite.ao</text>
+    <text x="50" y="155" font-family="'Inter', sans-serif" font-size="15" font-weight="400" fill="#CBD5E1">Website: www.mukanda.acite.ao</text>
+    <text x="50" y="185" font-family="'Inter', sans-serif" font-size="15" font-weight="400" fill="#CBD5E1">Localização: Luanda, República de Angola</text>
+
+    <!-- Partner Logos Row Placeholder -->
+    <line x1="50" y1="220" x2="680" y2="220" stroke="#FFFFFF" stroke-opacity="0.15" />
+    <text x="50" y="255" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#F59E0B" letter-spacing="2">FINANCIAMENTO &amp; COOPERAÇÃO</text>
+    <text x="50" y="285" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#94A3B8">ACITE • FUNDECIT • UNIÃO EUROPEIA (CAP4) • UNESCO</text>
+  </g>
+
+  <!-- Footer Base Line -->
+  <text x="425" y="1940" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#64748B">Projecto Mukanda © 2026-2029 • Todos os direitos reservados</text>
+</svg>
