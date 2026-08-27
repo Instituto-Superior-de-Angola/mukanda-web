@@ -211,8 +211,6 @@ export default function DiagnosticQuiz() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isCompleted, setIsCompleted] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [userProvince, setUserProvince] = useState('Luanda');
 
   const currentQ = quizQuestions[currentIdx];
   const progressPercent = Math.round(((currentIdx) / quizQuestions.length) * 100);
@@ -342,7 +340,7 @@ export default function DiagnosticQuiz() {
                     <span>Dimensão {key}: {data.name}</span>
                     <span className="font-mono text-mukanda-indigo">{data.score} / {data.max} pts ({dimPercent}%)</span>
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                  <div className="w-full bg-subtle border border-line rounded-full h-2 overflow-hidden">
                     <div 
                       className="bg-mukanda-indigo h-full rounded-full transition-all"
                       style={{ width: `${dimPercent}%` }}
@@ -460,7 +458,7 @@ export default function DiagnosticQuiz() {
           disabled={answers[currentQ.id] === undefined}
           className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-card ${
             answers[currentQ.id] === undefined
-              ? 'bg-slate-200 text-ink-muted cursor-not-allowed'
+              ? 'bg-subtle text-ink-muted cursor-not-allowed'
               : 'bg-mukanda-terracotta hover:bg-mukanda-terracotta-dark text-white'
           }`}
         >

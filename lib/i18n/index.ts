@@ -18,12 +18,12 @@ export function getDictionary(lang: Language = 'pt'): TranslationDictionary {
   return dictionaries[lang] || dictionaries.pt;
 }
 
-export function getNestedTranslation(obj: any, path: string): string {
+export function getNestedTranslation(obj: unknown, path: string): string {
   const parts = path.split('.');
   let current = obj;
   for (const part of parts) {
     if (current && typeof current === 'object' && part in current) {
-      current = current[part];
+      current = (current as Record<string, unknown>)[part];
     } else {
       return path;
     }
