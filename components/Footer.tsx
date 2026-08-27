@@ -1,178 +1,161 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, Mail, Globe, MapPin, Award, BookOpen, ExternalLink, Heart } from 'lucide-react';
+import { Mail, Globe, MapPin } from 'lucide-react';
+import MukandaMark from '@/components/MukandaMark';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function Footer() {
+  const { dict } = useTranslation();
+
+  const navegacao = [
+    { label: dict.nav.about, href: '/sobre' },
+    { label: dict.nav.transparency, href: '/transparencia' },
+    { label: dict.nav.questionnaires, href: '/questionarios' },
+    { label: dict.nav.diagnostic, href: '/diagnostico' },
+    { label: dict.nav.recruitment, href: '/recrutamento' },
+    { label: dict.nav.brand, href: '/marca' },
+  ];
+
+  const provincias = [
+    { nome: dict.common.luanda, tipo: 'Metropolitano', dados: '1.000 cidadãos · 50 formadores' },
+    { nome: dict.common.huila, tipo: 'Urbano interior', dados: '800 cidadãos · 35 formadores' },
+    { nome: dict.common.uige, tipo: 'Predominantemente rural', dados: '700 cidadãos · 35 formadores' },
+  ];
+
+  const parceiros = [
+    'ACITE (entidade proponente)',
+    'FUNDECIT / MESCTI',
+    'União Europeia — Programa CAP4',
+    'UNESCO',
+    'INE Angola',
+    'Sector privado de telecomunicações',
+  ];
+
   return (
-    <footer className="bg-[#071326] text-slate-300 border-t border-white/10">
-      {/* Upper Footer: Key Institutional & Partners Summary */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
-          {/* Col 1: About & Ancestral Manifesto */}
-          <div className="space-y-4">
+    <footer className="border-t border-line bg-subtle text-ink-soft">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+
+          {/* Identificação */}
+          <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-mukanda-terracotta flex items-center justify-center text-white font-bold font-display text-xl shadow">
-                M
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-lg text-white">PROJECTO MUKANDA</h3>
-                <p className="text-xs text-mukanda-gold-light">Quadro Angolano de Competências Digitais</p>
+              <MukandaMark className="w-11 h-11" />
+              <div className="leading-tight">
+                <p className="font-display font-semibold text-lg text-ink">{dict.common.projectName}</p>
+                <p className="text-2xs text-ink-muted">{dict.common.projectSubtitle}</p>
               </div>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Investigação aplicada multidisciplinar promovida pela <strong>ACITE</strong> para diagnóstico, 
-              avaliação psicométrica e inclusão digital em Angola, inspirada no saber milenar da iniciação Mukanda e na matriz matemática Lusona.
+            <p className="text-[0.8125rem] leading-relaxed text-ink-soft max-w-sm">
+              {dict.footer.aboutText}
             </p>
-            <div className="pt-2 text-xs text-slate-400 flex flex-col gap-1.5 font-mono">
-              <span className="flex items-center gap-1.5 text-mukanda-gold">
-                <ShieldCheck className="w-4 h-4 text-mukanda-emerald" />
-                <span>Protocolo FAIR &amp; Ética Científica</span>
+            <dl className="text-2xs text-ink-muted space-y-1 font-mono pt-1">
+              <div className="flex gap-2">
+                <dt className="text-ink-soft">Horizonte:</dt>
+                <dd>{dict.footer.durationLabel}</dd>
+              </div>
+              <div className="flex gap-2">
+                <dt className="text-ink-soft">Dados:</dt>
+                <dd>{dict.footer.ethicsNotice}</dd>
+              </div>
+            </dl>
+
+            <div className="pt-2">
+              <span className="text-2xs font-semibold text-ink-muted uppercase tracking-wider block mb-1.5">
+                {dict.common.selectLanguage}:
               </span>
-              <span className="text-slate-400">Horizonte: Julho 2026 – Julho 2029 (48 Meses)</span>
+              <LanguageSwitcher variant="inline" />
             </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
-          <div>
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Navegação &amp; Módulos
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link href="/sobre" className="hover:text-mukanda-gold transition-colors flex items-center gap-2">
-                  <BookOpen className="w-3.5 h-3.5 text-mukanda-terracotta" />
-                  <span>Sobre a ACITE &amp; AngoComp</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/transparencia" className="hover:text-mukanda-gold transition-colors flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-mukanda-emerald" />
-                  <span>Painel de Transparência &amp; Metas</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/diagnostico" className="hover:text-mukanda-gold transition-colors flex items-center gap-2 font-semibold text-mukanda-gold-light">
-                  <Award className="w-3.5 h-3.5 text-mukanda-gold" />
-                  <span>Auto-Diagnóstico AngoComp</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/questionarios" className="hover:text-mukanda-gold transition-colors flex items-center gap-2">
-                  <BookOpen className="w-3.5 h-3.5 text-mukanda-terracotta" />
-                  <span>Questionários Online (WP1)</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/recrutamento" className="hover:text-mukanda-gold transition-colors flex items-center gap-2">
-                  <Globe className="w-3.5 h-3.5 text-mukanda-emerald" />
-                  <span>Recrutamento &amp; Inscrições</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/marca" className="hover:text-mukanda-gold transition-colors flex items-center gap-2">
-                  <ExternalLink className="w-3.5 h-3.5 text-mukanda-gold" />
-                  <span>Manual de Identidade &amp; Media</span>
-                </Link>
-              </li>
+          {/* Navegação */}
+          <nav className="lg:col-span-3" aria-label="Navegação de rodapé">
+            <h2 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted pb-2 border-b border-line">
+              {dict.footer.navigationHeader}
+            </h2>
+            <ul className="mt-3 space-y-2 text-[0.8125rem]">
+              {navegacao.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-ink-soft hover:text-mukanda-indigo transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Territórios */}
+          <div className="lg:col-span-2">
+            <h2 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted pb-2 border-b border-line">
+              {dict.footer.provincesHeader}
+            </h2>
+            <ul className="mt-3 space-y-3 text-2xs">
+              {provincias.map((p) => (
+                <li key={p.nome}>
+                  <p className="font-semibold text-ink text-[0.8125rem]">{p.nome}</p>
+                  <p className="text-ink-muted">{p.tipo}</p>
+                  <p className="text-ink-muted font-mono">{p.dados}</p>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 3: Research Territories */}
-          <div>
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Províncias Piloto (WP1–WP6)
-            </h4>
-            <div className="space-y-3 text-xs">
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-mukanda-terracotta/40 transition-all">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-mukanda-terracotta"></span>
-                  <span>LUANDA — Metropolitano</span>
-                </div>
-                <p className="text-slate-400 mt-1">1.000 cidadãos certificados • 50 formadores • Foco em serviços digitais e cibersegurança.</p>
-              </div>
-
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-mukanda-gold/40 transition-all">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-mukanda-gold"></span>
-                  <span>HUÍLA — Urbano Interior</span>
-                </div>
-                <p className="text-slate-400 mt-1">800 cidadãos certificados • 35 formadores • Foco académico e integração comunitária.</p>
-              </div>
-
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 hover:border-mukanda-emerald/40 transition-all">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-mukanda-emerald"></span>
-                  <span>UÍGE — Predominantemente Rural</span>
-                </div>
-                <p className="text-slate-400 mt-1">700 cidadãos certificados • 35 formadores • Inclusão agrária e literacia de base.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 4: Contact & Institutional Anchor */}
-          <div className="space-y-3">
-            <h4 className="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Coordenação &amp; Contacto
-            </h4>
-            <p className="text-xs text-slate-400">
-              <strong>Investigador Principal:</strong><br />
-              Eng. Benone Marcos, PhD
-            </p>
-            <div className="space-y-2 text-xs text-slate-300">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-mukanda-terracotta shrink-0 mt-0.5" />
-                <span>Academia de Ciências Sociais e Tecnologias (ACITE) • Luanda, Angola</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-mukanda-gold shrink-0" />
-                <a href="mailto:investigacao@acite.ao" className="hover:text-white transition-colors">investigacao@acite.ao</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-mukanda-emerald shrink-0" />
-                <a href="https://mukanda.acite.ao" className="hover:text-white transition-colors">www.mukanda.acite.ao</a>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <Link 
-                href="/validar" 
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-mukanda-indigo text-xs text-mukanda-gold-light border border-mukanda-gold/30 hover:bg-mukanda-indigo-light transition-all font-semibold"
-              >
-                <ShieldCheck className="w-4 h-4 text-mukanda-gold" />
-                <span>Verificar Certificado AngoComp</span>
+          {/* Contacto */}
+          <div className="lg:col-span-3">
+            <h2 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted pb-2 border-b border-line">
+              {dict.footer.contactHeader}
+            </h2>
+            <div className="mt-3 space-y-3 text-[0.8125rem]">
+              <p>
+                <span className="text-ink-muted text-2xs block uppercase tracking-kicker">{dict.footer.principalInvestigatorLabel}</span>
+                <span className="text-ink font-medium">Eng. Benone Marcos, PhD</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-ink-muted shrink-0 mt-0.5" aria-hidden />
+                <span>ACITE — Instituto Superior de Angola, Luanda</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-ink-muted shrink-0" aria-hidden />
+                <a href="mailto:investigacao@acite.ao" className="hover:text-mukanda-indigo transition-colors">
+                  investigacao@acite.ao
+                </a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Globe className="w-4 h-4 text-ink-muted shrink-0" aria-hidden />
+                <a href="https://mukanda.acite.ao" className="hover:text-mukanda-indigo transition-colors">
+                  mukanda.acite.ao
+                </a>
+              </p>
+              <Link href="/validar" className="btn-outline text-2xs py-2 mt-1">
+                {dict.footer.verifyBadgeBtn}
               </Link>
             </div>
           </div>
-
         </div>
 
-        {/* Partners and Sponsors Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <p className="text-xs uppercase tracking-widest text-slate-400 text-center font-semibold mb-4">
-            Financiamento, Parcerias Científicas &amp; Cooperação Institucional Prevista
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-slate-400">
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">ACITE (Proponente Única)</span>
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">FUNDECIT / MESCTI</span>
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">União Europeia (Programa CAP4)</span>
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">UNESCO</span>
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">INE Angola</span>
-            <span className="px-3 py-1.5 rounded bg-white/5 border border-white/5 hover:text-white transition-colors">Sector Privado de Telecomunicações</span>
-          </div>
+        {/* Parcerias */}
+        <div className="mt-12 pt-8 border-t border-line">
+          <h2 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted text-center">
+            {dict.footer.partnersKicker}
+          </h2>
+          <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-2xs text-ink-soft">
+            {parceiros.map((p) => (
+              <li key={p} className="whitespace-nowrap">{p}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Bottom Legal bar */}
-      <div className="bg-[#040D1B] py-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <div>
-            © {new Date().getFullYear()} Projecto MUKANDA — ACITE (Instituto Superior de Angola). Todos os direitos reservados.
-          </div>
+      {/* Barra legal */}
+      <div className="border-t border-line bg-paper">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-2xs text-ink-muted">
+          <p>© {new Date().getFullYear()} {dict.footer.rightsReserved}</p>
           <div className="flex items-center gap-6">
-            <Link href="/transparencia" className="hover:text-mukanda-gold transition-colors">Política de Transparência</Link>
-            <Link href="/sobre" className="hover:text-mukanda-gold transition-colors">Privacidade &amp; Dados FAIR</Link>
-            <Link href="/contacto" className="hover:text-mukanda-gold transition-colors">Canal de Ética</Link>
+            <Link href="/transparencia" className="hover:text-ink transition-colors">{dict.footer.transparencyPolicy}</Link>
+            <Link href="/sobre" className="hover:text-ink transition-colors">{dict.footer.fairPrivacy}</Link>
+            <Link href="/contacto" className="hover:text-ink transition-colors">{dict.footer.ethicsChannel}</Link>
           </div>
         </div>
       </div>

@@ -1,20 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Users, Building, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function ProvinceMapCard() {
   const [activeProvince, setActiveProvince] = useState<'luanda' | 'huila' | 'uige'>('luanda');
+  const { dict } = useTranslation();
 
   const provinces = {
     luanda: {
-      name: "Província de Luanda",
+      name: dict.common.luanda,
+      fullName: `Província de ${dict.common.luanda}`,
       type: "Tipo Metropolitano & Alta Densidade",
-      color: "from-mukanda-terracotta to-orange-600",
-      accent: "text-mukanda-terracotta",
-      border: "border-mukanda-terracotta",
-      bgBadge: "bg-mukanda-terracotta/10 text-mukanda-terracotta-dark",
       certifiedTarget: "1.000 Cidadãos",
       trainersTarget: "50 Formadores",
       sampleWP1: "700 Inquiridos",
@@ -27,12 +26,9 @@ export default function ProvinceMapCard() {
       description: "Como capital e centro financeiro do país, Luanda apresenta elevada penetração de infraestrutura de conectividade móvel, mas assimetrias marcantes no uso produtivo e seguro dos recursos digitais."
     },
     huila: {
-      name: "Província da Huíla",
+      name: dict.common.huila,
+      fullName: `Província da ${dict.common.huila}`,
       type: "Tipo Urbano Interior & Pólo Universitário",
-      color: "from-mukanda-gold to-amber-600",
-      accent: "text-mukanda-gold",
-      border: "border-mukanda-gold",
-      bgBadge: "bg-mukanda-gold/10 text-amber-900",
       certifiedTarget: "800 Cidadãos",
       trainersTarget: "35 Formadores",
       sampleWP1: "450 Inquiridos",
@@ -45,12 +41,9 @@ export default function ProvinceMapCard() {
       description: "Representa o tecido sociocultural do sul de Angola, combinando uma sólida tradição académica no Lubango com comunidades periurbanas que beneficiam da formação multiplicadora."
     },
     uige: {
-      name: "Província do Uíge",
+      name: dict.common.uige,
+      fullName: `Província do ${dict.common.uige}`,
       type: "Tipo Predominantemente Rural & Agrário",
-      color: "from-mukanda-emerald to-emerald-600",
-      accent: "text-mukanda-emerald",
-      border: "border-mukanda-emerald",
-      bgBadge: "bg-mukanda-emerald/10 text-emerald-950",
       certifiedTarget: "700 Cidadãos",
       trainersTarget: "35 Formadores",
       sampleWP1: "350 Inquiridos",
@@ -65,150 +58,105 @@ export default function ProvinceMapCard() {
   };
 
   const curr = provinces[activeProvince];
+  const separador = (Object.keys(provinces) as Array<keyof typeof provinces>);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-      {/* Header with Province Selector Tabs */}
-      <div className="bg-[#0F2C59] text-white p-6 sm:p-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-mukanda-gold-light text-xs uppercase font-mono tracking-wider">
-              <MapPin className="w-4 h-4 text-mukanda-gold" />
-              <span>Pilotagem Territorial (WP3 &amp; WP4)</span>
-            </div>
-            <h3 className="font-display font-black text-2xl sm:text-3xl text-white mt-1">
-              As 3 Províncias Tipológicas de Angola
-            </h3>
-            <p className="text-slate-300 text-sm mt-1 max-w-2xl">
-              Desenho quase-experimental e representativo que assegura que o referencial <strong>AngoComp</strong> responde tanto à realidade da metrópole quanto ao interior e às comunidades rurais.
-            </p>
-          </div>
-
-          {/* Selector Buttons */}
-          <div className="flex items-center gap-2 bg-[#071326] p-1.5 rounded-xl border border-white/10 shrink-0">
-            <button
-              onClick={() => setActiveProvince('luanda')}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                activeProvince === 'luanda'
-                  ? 'bg-mukanda-terracotta text-white shadow-md'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Luanda
-            </button>
-            <button
-              onClick={() => setActiveProvince('huila')}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                activeProvince === 'huila'
-                  ? 'bg-mukanda-gold text-mukanda-indigo-dark shadow-md'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Huíla
-            </button>
-            <button
-              onClick={() => setActiveProvince('uige')}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
-                activeProvince === 'uige'
-                  ? 'bg-mukanda-emerald text-white shadow-md'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Uíge
-            </button>
-          </div>
-        </div>
+    <div>
+      {/* Cabeçalho */}
+      <div className="max-w-prose">
+        <p className="kicker">
+          <span className="w-6 border-t border-mukanda-terracotta" aria-hidden />
+          {dict.provincesSection.kicker}
+        </p>
+        <h2 className="mt-4 font-display font-semibold text-3xl sm:text-4xl tracking-tight text-ink">
+          {dict.provincesSection.title}
+        </h2>
+        <p className="mt-4 prose-mukanda">
+          {dict.provincesSection.subtitle}
+        </p>
       </div>
 
-      {/* Main Province Details Grid */}
-      <div className="p-6 sm:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          
-          {/* Left Summary */}
-          <div className="lg:col-span-1 space-y-5">
+      {/* Selector de província */}
+      <div
+        className="mt-8 flex flex-wrap gap-2 border-b border-line pb-px"
+        role="tablist"
+        aria-label="Províncias piloto"
+      >
+        {separador.map((key) => {
+          const isActive = activeProvince === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => setActiveProvince(key)}
+              className={`px-4 py-2.5 text-sm font-medium -mb-px border-b-2 transition-colors ${
+                isActive
+                  ? 'border-mukanda-terracotta text-ink'
+                  : 'border-transparent text-ink-muted hover:text-ink-soft'
+              }`}
+            >
+              {provinces[key].name}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Ficha da província */}
+      <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+
+        <div className="lg:col-span-5">
+          <p className="font-mono text-2xs uppercase tracking-kicker text-ink-muted">{curr.type}</p>
+          <h3 className="mt-2 font-display font-semibold text-2xl text-ink">{curr.fullName}</h3>
+          <p className="mt-3 prose-mukanda">{curr.description}</p>
+
+          <dl className="mt-6 border-t border-line divide-y divide-line">
+            {[
+              [dict.provincesSection.targetCertified, curr.certifiedTarget, 'WP4'],
+              [dict.provincesSection.targetTrainers, curr.trainersTarget, 'WP3'],
+              [dict.provincesSection.targetSample, curr.sampleWP1, 'WP1'],
+            ].map(([rotulo, valor, wp]) => (
+              <div key={rotulo} className="py-3.5 flex items-baseline justify-between gap-4">
+                <dt className="text-[0.8125rem] text-ink-soft">
+                  {rotulo}
+                  <span className="ml-2 font-mono text-2xs text-ink-muted">{wp}</span>
+                </dt>
+                <dd className="font-display font-semibold text-lg text-mukanda-indigo tabular">{valor}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="lg:col-span-7">
+          <h4 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted pb-2 border-b border-line">
+            {dict.provincesSection.prioritiesTitle}
+          </h4>
+          <ol className="mt-4 divide-y divide-line border-b border-line">
+            {curr.focusAreas.map((area, idx) => (
+              <li key={area} className="py-4 grid grid-cols-[2rem_1fr] gap-3">
+                <span className="font-mono text-2xs text-ink-muted pt-1">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <p className="text-[0.8125rem] leading-relaxed text-ink-soft">{area}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 p-5 border border-line rounded-lg bg-subtle">
             <div>
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${curr.bgBadge}`}>
-                {curr.type}
-              </span>
-              <h4 className="font-display font-black text-2xl text-[#0F2C59] mt-2">
-                {curr.name}
-              </h4>
-              <p className="text-slate-600 text-sm mt-2 leading-relaxed">
-                {curr.description}
+              <p className="font-display font-semibold text-ink">
+                {dict.provincesSection.residentCall} ({curr.name})
+              </p>
+              <p className="mt-1 text-[0.8125rem] text-ink-soft">
+                {dict.provincesSection.residentDesc}
               </p>
             </div>
-
-            {/* Target Numbers Cards */}
-            <div className="space-y-2.5 pt-2">
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Users className={`w-5 h-5 ${curr.accent}`} />
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium">Meta de Cidadãos Certificados</div>
-                    <div className="font-display font-bold text-lg text-slate-900">{curr.certifiedTarget}</div>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-700">WP4</span>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Building className={`w-5 h-5 ${curr.accent}`} />
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium">Formadores Multiplicadores</div>
-                    <div className="font-display font-bold text-lg text-slate-900">{curr.trainersTarget}</div>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-700">WP3</span>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className={`w-5 h-5 ${curr.accent}`} />
-                  <div>
-                    <div className="text-xs text-slate-500 font-medium">Amostra de Inquérito (WP1)</div>
-                    <div className="font-display font-bold text-lg text-slate-900">{curr.sampleWP1}</div>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-700">WP1</span>
-              </div>
-            </div>
+            <Link href="/recrutamento" className="btn-primary text-[0.8125rem] py-2 shrink-0">
+              {dict.provincesSection.ctaApplyProvince}
+              <ArrowRight className="w-4 h-4" aria-hidden />
+            </Link>
           </div>
-
-          {/* Right Focus Areas & Actions */}
-          <div className="lg:col-span-2 space-y-6">
-            <h5 className="font-display font-bold text-base text-slate-900 flex items-center gap-2">
-              <span className={`w-2.5 h-2.5 rounded-full ${curr.accent === 'text-mukanda-terracotta' ? 'bg-mukanda-terracotta' : curr.accent === 'text-mukanda-gold' ? 'bg-mukanda-gold' : 'bg-mukanda-emerald'}`}></span>
-              <span>Prioridades Estratégicas &amp; Trabalho de Campo em {curr.name}</span>
-            </h5>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {curr.focusAreas.map((area, idx) => (
-                <div key={idx} className="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:bg-white hover:border-slate-300 transition-all flex items-start gap-3 shadow-sm">
-                  <CheckCircle2 className={`w-5 h-5 ${curr.accent} shrink-0 mt-0.5`} />
-                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-snug">
-                    {area}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Call to Action for this Province */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-slate-900 to-[#0F2C59] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <h6 className="font-bold text-sm text-mukanda-gold-light">Reside ou trabalha em {curr.name}?</h6>
-                <p className="text-xs text-slate-300">Inscreva-se como inquiridor(a) de campo ou participe nas sessões de teste e formação.</p>
-              </div>
-              <Link
-                href="/recrutamento"
-                className="px-4 py-2 rounded-lg bg-mukanda-terracotta hover:bg-mukanda-terracotta-light text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shrink-0 transition-all shadow-md"
-              >
-                <span>Candidatar-se na {curr.name.replace('Província de ', '')}</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>

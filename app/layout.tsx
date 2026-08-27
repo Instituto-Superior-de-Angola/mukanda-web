@@ -2,10 +2,16 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 
 export const metadata: Metadata = {
-  title: 'Projecto Mukanda • Quadro Angolano de Competências Digitais (AngoComp)',
-  description: 'Plataforma oficial de transparência, diagnóstico psicométrico e inclusão digital em Angola. Investigação aplicada promovida pela ACITE.',
+  metadataBase: new URL('https://mukanda.acite.ao'),
+  title: {
+    default: 'Projecto Mukanda — Quadro Angolano de Competências Digitais (AngoComp)',
+    template: '%s · Projecto Mukanda',
+  },
+  description:
+    'Plataforma de acompanhamento público do Projecto Mukanda: concepção, validação psicométrica e pilotagem do Quadro Angolano de Competências Digitais (AngoComp) e do Índice ILDA. Investigação aplicada promovida pela ACITE.',
   keywords: [
     'Literacia Digital Angola', 
     'AngoComp', 
@@ -39,12 +45,20 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/assets/logo-mukanda-simbolo.svg" type="image/svg+xml" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FCFBF9] text-slate-800 antialiased">
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+      <body className="min-h-screen flex flex-col bg-paper text-ink antialiased">
+        <LanguageProvider>
+          <a
+            href="#conteudo"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:bg-white focus:border focus:border-line focus:rounded-md focus:text-sm"
+          >
+            Saltar para o conteúdo principal
+          </a>
+          <Navbar />
+          <main id="conteudo" className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

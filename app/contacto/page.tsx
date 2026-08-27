@@ -1,9 +1,13 @@
 'use client';
 
+import PageHeader from '@/components/PageHeader';
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send, ShieldCheck, CheckCircle2, AlertCircle, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function ContactoPage() {
+  const { dict } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,35 +30,32 @@ export default function ContactoPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Banner */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-mukanda-terracotta/10 text-mukanda-terracotta text-xs font-mono font-bold uppercase tracking-wider">
-            <Mail className="w-4 h-4 text-mukanda-terracotta" />
-            <span>Contacto &amp; Canal de Integridade</span>
-          </div>
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-[#0F2C59] tracking-tight">
-            Fale Connosco
-          </h1>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Entre em contacto com a coordenação científica do Projecto Mukanda ou utilize o nosso canal confidencial de ética e sugestões.
-          </p>
-        </div>
+    <>
+      <PageHeader
+        kicker="Contacto e canal de integridade"
+        title="Contactar a coordenação científica"
+        lead={`Dirija questões metodológicas, propostas de parceria ou pedidos de acesso a dados à coordenação do ${dict.common.projectName}. O canal de ética recebe comunicações confidenciais sobre conduta de investigação.`}
+        meta={[
+          { label: 'Coordenação', value: 'investigacao@acite.ao' },
+          { label: 'Sede', value: `ACITE, ${dict.common.luanda} — Angola` },
+          { label: 'Resposta', value: 'Até 5 dias úteis' },
+          { label: 'Canal de ética', value: 'Tratamento confidencial' },
+        ]}
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-12">
         {/* 2-Columns: Info + Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Info (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-              <h3 className="font-display font-bold text-xl text-[#0F2C59]">
+            <div className="card p-6 sm:p-8 space-y-6">
+              <h3 className="font-display font-semibold text-xl text-ink">
                 Sede Institucional &amp; Coordenação
               </h3>
 
-              <div className="space-y-4 text-xs sm:text-sm text-slate-700">
+              <div className="space-y-4 text-xs sm:text-sm text-ink-soft">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-mukanda-terracotta shrink-0 mt-0.5" />
                   <div>
@@ -70,7 +71,7 @@ export default function ContactoPage() {
                     <a href="mailto:investigacao@acite.ao" className="hover:text-mukanda-terracotta transition-colors font-medium">
                       investigacao@acite.ao
                     </a><br />
-                    <span className="text-xs text-slate-400">bmarcos@acite.ao (Investigador Principal)</span>
+                    <span className="text-xs text-ink-muted">bmarcos@acite.ao (Investigador Principal)</span>
                   </div>
                 </div>
 
@@ -82,13 +83,13 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100">
-                <h5 className="font-bold text-xs uppercase text-slate-400 tracking-wider mb-2">Pólos Regionais</h5>
-                <div className="grid grid-cols-2 gap-2 text-xs text-slate-600">
-                  <div className="p-2 rounded bg-slate-50 border border-slate-100">
+              <div className="pt-4 border-t border-line">
+                <h5 className="font-semibold text-xs uppercase text-ink-muted tracking-wider mb-2">Pólos Regionais</h5>
+                <div className="grid grid-cols-2 gap-2 text-xs text-ink-soft">
+                  <div className="p-2 rounded bg-subtle border border-line">
                     <strong>Pólo Huíla:</strong> Lubango
                   </div>
-                  <div className="p-2 rounded bg-slate-50 border border-slate-100">
+                  <div className="p-2 rounded bg-subtle border border-line">
                     <strong>Pólo Uíge:</strong> Uíge / Negage
                   </div>
                 </div>
@@ -96,12 +97,12 @@ export default function ContactoPage() {
             </div>
 
             {/* Ethics Box */}
-            <div className="bg-slate-900 text-white rounded-2xl p-6 border border-white/10 space-y-3">
-              <div className="flex items-center gap-2 text-mukanda-gold-light font-bold text-sm">
-                <ShieldCheck className="w-5 h-5 text-mukanda-emerald" />
-                <span>Canal de Integridade &amp; Ética</span>
+            <div className="rounded-lg p-6 border-l-2 border-mukanda-terracotta bg-subtle space-y-3">
+              <div className="flex items-center gap-2 font-display font-semibold text-base text-ink">
+                <ShieldCheck className="w-5 h-5 text-mukanda-emerald" aria-hidden />
+                <span>Canal de integridade e ética</span>
               </div>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-[0.8125rem] text-ink-soft leading-relaxed">
                 Pode enviar mensagens de forma totalmente anónima para relatar dúvidas sobre inquéritos de campo, sugerir melhorias ou reportar qualquer inconformidade com o código ético do projecto.
               </p>
             </div>
@@ -110,15 +111,15 @@ export default function ContactoPage() {
 
           {/* Right Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-xl">
+            <div className="card p-6 sm:p-10">
               
               {submitted ? (
                 <div className="text-center py-10 space-y-4">
-                  <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-mukanda-emerald mx-auto flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-md border border-line bg-subtle text-mukanda-emerald mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h4 className="font-display font-bold text-2xl text-[#0F2C59]">Mensagem Enviada com Sucesso!</h4>
-                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+                  <h4 className="font-display font-semibold text-2xl text-ink">Mensagem Enviada com Sucesso!</h4>
+                  <p className="text-xs sm:text-sm text-ink-soft max-w-md mx-auto">
                     Agradecemos o seu contacto. A nossa equipa responderá com a maior brevidade possível.
                   </p>
                   <button
@@ -126,20 +127,20 @@ export default function ContactoPage() {
                       setSubmitted(false);
                       setFormData({ name: '', email: '', subject: 'informacao', message: '', isAnonymousEthics: false });
                     }}
-                    className="px-6 py-2.5 rounded-xl bg-[#0F2C59] text-white text-xs font-bold hover:bg-slate-800 transition-all"
+                    className="btn-primary text-[0.8125rem]"
                   >
                     Enviar Outra Mensagem
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <h3 className="font-display font-bold text-xl text-[#0F2C59] mb-4">
+                  <h3 className="font-display font-semibold text-xl text-ink mb-4">
                     Envie uma Mensagem à Coordenação
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-ink-soft mb-1">
                         O seu Nome {formData.isAnonymousEthics ? '(Opcional)' : '*'}
                       </label>
                       <input
@@ -148,12 +149,12 @@ export default function ContactoPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder={formData.isAnonymousEthics ? "Anónimo" : "Ex: Maria Silva"}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-mukanda-terracotta"
+                        className="field"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      <label className="block text-xs font-semibold text-ink-soft mb-1">
                         Correio Electrónico {formData.isAnonymousEthics ? '(Opcional)' : '*'}
                       </label>
                       <input
@@ -162,17 +163,17 @@ export default function ContactoPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="exemplo@dominio.ao"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-mukanda-terracotta"
+                        className="field"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">Assunto da Mensagem</label>
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Assunto da Mensagem</label>
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-mukanda-terracotta"
+                      className="field"
                     >
                       <option value="informacao">Pedido Geral de Informação</option>
                       <option value="parceria">Parceria Científica ou Apoio Institucional</option>
@@ -183,24 +184,24 @@ export default function ContactoPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">Mensagem *</label>
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Mensagem *</label>
                     <textarea
                       rows={5}
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Escreva detalhadamente a sua mensagem..."
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-mukanda-terracotta"
+                      className="field"
                     ></textarea>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
-                    <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700">
+                  <div className="p-3 rounded-lg bg-subtle border border-line">
+                    <label className="flex items-center gap-2.5 cursor-pointer text-xs text-ink-soft">
                       <input
                         type="checkbox"
                         checked={formData.isAnonymousEthics}
                         onChange={(e) => setFormData({ ...formData, isAnonymousEthics: e.target.checked })}
-                        className="rounded border-slate-300 text-mukanda-terracotta focus:ring-mukanda-terracotta"
+                        className="rounded border-line-strong text-mukanda-terracotta focus:ring-mukanda-indigo"
                       />
                       <span className="font-medium">Enviar como comunicação anónima para o Canal de Ética</span>
                     </label>
@@ -209,7 +210,7 @@ export default function ContactoPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto px-8 py-3 rounded-xl bg-mukanda-terracotta hover:bg-mukanda-terracotta-light text-white font-display font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full sm:w-auto px-8 py-3 rounded-xl bg-mukanda-terracotta hover:bg-mukanda-terracotta-dark text-white font-display font-semibold text-sm shadow-card transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {loading ? (
                       <span>A Enviar Mensagem...</span>
@@ -229,6 +230,6 @@ export default function ContactoPage() {
         </div>
 
       </div>
-    </div>
+    </>
   );
 }

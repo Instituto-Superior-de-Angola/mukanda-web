@@ -1,18 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  CheckCircle2, 
-  HelpCircle, 
-  ArrowRight, 
-  RotateCcw, 
-  Award, 
-  BarChart2, 
-  Download, 
-  Share2,
-  ShieldCheck,
-  Sparkles
-} from 'lucide-react';
+import { CheckCircle2, ArrowRight, RotateCcw, Award, ShieldCheck, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface Question {
@@ -274,16 +263,16 @@ export default function DiagnosticQuiz() {
     const percentTotal = Math.round((totalScore / maxTotal) * 100);
 
     let level = "Nível A1/A2 — Básico / Iniciante";
-    let levelBadge = "bg-amber-100 text-amber-900 border-amber-300";
+    let levelBadge = "bg-amber-50 text-amber-900 border-amber-200";
     let levelDesc = "Possui noções elementares de navegação e comunicação móvel, mas necessita de formação prática em segurança, verificação de dados e criação de documentos.";
 
     if (percentTotal >= 75) {
       level = "Nível C1/C2 — Avançado / Perfil Multiplicador";
-      levelBadge = "bg-emerald-100 text-emerald-900 border-emerald-300";
+      levelBadge = "bg-emerald-50 text-emerald-900 border-emerald-200";
       levelDesc = "Demonstra elevada autonomia crítica, rigor na gestão de dados, cibersegurança activa e aptidão para se candidatar como Formador Multiplicador do Projecto Mukanda.";
     } else if (percentTotal >= 45) {
       level = "Nível B1/B2 — Intermédio / Usuário Autónomo";
-      levelBadge = "bg-blue-100 text-blue-900 border-blue-300";
+      levelBadge = "bg-blue-50 text-blue-900 border-blue-200";
       levelDesc = "Executa tarefas digitais correntes com segurança, mas beneficiará dos módulos AngoComp para aprofundar ferramentas de colaboração e produtividade.";
     }
 
@@ -294,19 +283,19 @@ export default function DiagnosticQuiz() {
     const res = calculateResults();
 
     return (
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-10 max-w-4xl mx-auto text-slate-800">
+      <div className="card p-6 sm:p-10 max-w-4xl mx-auto text-ink">
         {/* Certificate Badge Header */}
-        <div className="text-center space-y-3 pb-8 border-b border-slate-100">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-mukanda-gold to-mukanda-terracotta mx-auto p-4 text-white shadow-xl flex items-center justify-center">
-            <Award className="w-8 h-8" />
+        <div className="text-center space-y-3 pb-8 border-b border-line">
+          <div className="w-14 h-14 rounded-md mx-auto border border-line bg-subtle text-mukanda-indigo flex items-center justify-center">
+            <Award className="w-6 h-6" aria-hidden />
           </div>
-          <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">
+          <span className="text-xs font-mono font-semibold text-ink-muted uppercase tracking-widest">
             Diagnóstico Concluído • Quadro AngoComp (ACITE)
           </span>
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-[#0F2C59]">
+          <h2 className="font-display font-semibold text-2xl sm:text-3xl text-ink">
             Resultado da Avaliação de Literacia Digital
           </h2>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold border ${res.levelBadge}">
+          <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border ${res.levelBadge}`}>
             <Sparkles className="w-4 h-4 text-mukanda-gold" />
             <span>{res.level}</span>
           </div>
@@ -314,24 +303,24 @@ export default function DiagnosticQuiz() {
 
         {/* Big Score Overview */}
         <div className="py-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-          <div className="md:col-span-1 p-6 rounded-2xl bg-[#0F2C59] text-white text-center shadow-lg">
-            <span className="text-xs uppercase tracking-wider text-mukanda-gold-light font-mono">Índice Geral</span>
-            <div className="font-display font-black text-5xl text-white mt-1">
-              {res.percentTotal}<span className="text-2xl text-mukanda-gold">%</span>
+          <div className="md:col-span-1 p-6 rounded-lg border border-line bg-subtle text-center">
+            <span className="text-2xs uppercase tracking-kicker text-ink-muted">Índice geral</span>
+            <div className="font-display font-semibold text-5xl text-mukanda-indigo mt-1 tabular">
+              {res.percentTotal}<span className="text-2xl text-mukanda-terracotta">%</span>
             </div>
-            <div className="text-xs text-slate-300 mt-2">
+            <div className="text-2xs text-ink-muted mt-2">
               Pontuação: {res.totalScore} de {res.maxTotal} pontos
             </div>
           </div>
 
           <div className="md:col-span-2 space-y-3">
-            <h4 className="font-display font-bold text-base text-slate-900">
+            <h4 className="font-display font-semibold text-base text-ink">
               Diagnóstico Pedagógico do Perfil:
             </h4>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-ink-soft leading-relaxed">
               {res.levelDesc}
             </p>
-            <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
+            <div className="p-3 rounded-lg bg-subtle border border-line text-xs text-ink-soft flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-mukanda-emerald shrink-0" />
               <span>Avaliação compatível com a escala psicométrica do Índice ILDA (WP1–WP2).</span>
             </div>
@@ -339,8 +328,8 @@ export default function DiagnosticQuiz() {
         </div>
 
         {/* 5 Dimensions Breakdown Progress Bars */}
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h4 className="font-display font-bold text-sm text-slate-900 uppercase tracking-wider">
+        <div className="space-y-4 pt-4 border-t border-line">
+          <h4 className="font-display font-semibold text-sm text-ink uppercase tracking-wider">
             Desempenho por Dimensão AngoComp
           </h4>
 
@@ -348,14 +337,14 @@ export default function DiagnosticQuiz() {
             {Object.entries(res.dimScores).map(([key, data]) => {
               const dimPercent = Math.round((data.score / data.max) * 100);
               return (
-                <div key={key} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
-                  <div className="flex justify-between items-center text-xs font-bold text-slate-800">
+                <div key={key} className="p-3 rounded-xl bg-subtle border border-line space-y-1.5">
+                  <div className="flex justify-between items-center text-xs font-semibold text-ink">
                     <span>Dimensão {key}: {data.name}</span>
                     <span className="font-mono text-mukanda-indigo">{data.score} / {data.max} pts ({dimPercent}%)</span>
                   </div>
                   <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-mukanda-terracotta to-mukanda-gold h-full rounded-full transition-all"
+                      className="bg-mukanda-indigo h-full rounded-full transition-all"
                       style={{ width: `${dimPercent}%` }}
                     ></div>
                   </div>
@@ -366,10 +355,10 @@ export default function DiagnosticQuiz() {
         </div>
 
         {/* Next Steps & Call to Actions */}
-        <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-8 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
             onClick={handleRestart}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-line-strong hover:bg-subtle text-ink-soft text-xs font-semibold transition-all flex items-center justify-center gap-2"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Repetir Auto-Avaliação</span>
@@ -378,7 +367,7 @@ export default function DiagnosticQuiz() {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <Link
               href="/recrutamento"
-              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-mukanda-terracotta hover:bg-mukanda-terracotta-light text-white text-xs sm:text-sm font-bold shadow-md shadow-mukanda-terracotta/20 transition-all flex items-center justify-center gap-2 text-center"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-mukanda-terracotta hover:bg-mukanda-terracotta-dark text-white text-xs sm:text-sm font-semibold shadow-card transition-all flex items-center justify-center gap-2 text-center"
             >
               <span>Inscrever-se para Certificação Oficial</span>
               <ArrowRight className="w-4 h-4" />
@@ -391,32 +380,32 @@ export default function DiagnosticQuiz() {
 
   // Active Quiz View
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-10 max-w-3xl mx-auto">
+    <div className="card p-6 sm:p-10 max-w-3xl mx-auto">
       
       {/* Top Header & Progress */}
       <div className="mb-6 space-y-3">
-        <div className="flex justify-between items-center text-xs font-mono text-slate-500">
-          <span className="font-bold text-mukanda-terracotta uppercase">
+        <div className="flex justify-between items-center text-xs font-mono text-ink-muted">
+          <span className="font-semibold text-mukanda-terracotta uppercase">
             Questão {currentIdx + 1} de {quizQuestions.length}
           </span>
           <span>{progressPercent}% Concluído</span>
         </div>
 
-        <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+        <div className="w-full bg-subtle rounded-full h-2 overflow-hidden">
           <div 
-            className="bg-gradient-to-r from-mukanda-terracotta to-mukanda-gold h-full rounded-full transition-all duration-300"
+            className="bg-mukanda-terracotta h-full rounded-full transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           ></div>
         </div>
 
-        <div className="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+        <div className="inline-block px-3 py-1 rounded-full bg-subtle text-ink-soft text-xs font-semibold">
           Dimensão: {currentQ.dimension}
         </div>
       </div>
 
       {/* Question Text */}
       <div className="mb-8">
-        <h3 className="font-display font-bold text-lg sm:text-xl text-[#0F2C59] leading-snug">
+        <h3 className="font-display font-semibold text-lg sm:text-xl text-ink leading-snug">
           {currentQ.question}
         </h3>
       </div>
@@ -431,19 +420,19 @@ export default function DiagnosticQuiz() {
               onClick={() => handleSelectOption(opt.points)}
               className={`w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
                 isSelected
-                  ? 'bg-mukanda-indigo/5 border-mukanda-indigo shadow-sm'
-                  : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/70 bg-white'
+                  ? 'bg-mukanda-indigo/5 border-mukanda-indigo'
+                  : 'border-line hover:border-line-strong hover:bg-subtle bg-white'
               }`}
             >
               <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${
                 isSelected 
                   ? 'border-mukanda-indigo bg-mukanda-indigo text-white' 
-                  : 'border-slate-300'
+                  : 'border-line-strong'
               }`}>
                 {isSelected && <CheckCircle2 className="w-3.5 h-3.5" />}
               </div>
               <span className={`text-xs sm:text-sm font-medium leading-relaxed ${
-                isSelected ? 'text-mukanda-indigo font-bold' : 'text-slate-700'
+                isSelected ? 'text-mukanda-indigo font-semibold' : 'text-ink-soft'
               }`}>
                 {opt.text}
               </span>
@@ -453,14 +442,14 @@ export default function DiagnosticQuiz() {
       </div>
 
       {/* Bottom Nav Buttons */}
-      <div className="flex justify-between items-center pt-4 border-t border-slate-100">
+      <div className="flex justify-between items-center pt-4 border-t border-line">
         <button
           onClick={handlePrev}
           disabled={currentIdx === 0}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+          className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
             currentIdx === 0
-              ? 'opacity-40 cursor-not-allowed text-slate-400'
-              : 'text-slate-600 hover:bg-slate-100'
+              ? 'opacity-40 cursor-not-allowed text-ink-muted'
+              : 'text-ink-soft hover:bg-subtle'
           }`}
         >
           ← Anterior
@@ -469,10 +458,10 @@ export default function DiagnosticQuiz() {
         <button
           onClick={handleNext}
           disabled={answers[currentQ.id] === undefined}
-          className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shadow-md ${
+          className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-card ${
             answers[currentQ.id] === undefined
-              ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-              : 'bg-mukanda-terracotta hover:bg-mukanda-terracotta-light text-white shadow-mukanda-terracotta/20'
+              ? 'bg-slate-200 text-ink-muted cursor-not-allowed'
+              : 'bg-mukanda-terracotta hover:bg-mukanda-terracotta-dark text-white'
           }`}
         >
           <span>{currentIdx === quizQuestions.length - 1 ? 'Finalizar Diagnóstico' : 'Próxima Questão'}</span>

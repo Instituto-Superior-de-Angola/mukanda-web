@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, CheckCircle2, Clock, Award, Users, Database, FileText } from 'lucide-react';
+import { Calendar, CheckCircle2 } from 'lucide-react';
 
 export default function TimelineGantt() {
   const workPackages = [
@@ -10,7 +10,7 @@ export default function TimelineGantt() {
       title: "Diagnóstico Empírico de Linha de Base",
       period: "Mês 01 – Mês 09 (Julho 2026 – Março 2027)",
       status: "Em Preparação / Submissão",
-      statusColor: "bg-amber-100 text-amber-900 border-amber-300",
+      statusColor: "bg-amber-50 text-amber-900 border-amber-200",
       leader: "Equipa de Metodologia & Estatística ACITE",
       deliverables: [
         "Inquérito Nacional de Base com N=1.500 amostras (Luanda, Huíla, Uíge)",
@@ -24,7 +24,7 @@ export default function TimelineGantt() {
       title: "Concepção do Quadro AngoComp & Método Delphi",
       period: "Mês 07 – Mês 16 (Janeiro 2027 – Outubro 2027)",
       status: "Planeado",
-      statusColor: "bg-slate-100 text-slate-800 border-slate-300",
+      statusColor: "bg-subtle text-ink border-line-strong",
       leader: "Comité Científico Internacional (CCI)",
       deliverables: [
         "Painel Delphi internacional com 30 peritos (Angola, UE, CPLP, UNESCO)",
@@ -38,7 +38,7 @@ export default function TimelineGantt() {
       title: "Formação de 120 Formadores Multiplicadores",
       period: "Mês 15 – Mês 26 (Setembro 2027 – Agosto 2028)",
       status: "Planeado",
-      statusColor: "bg-slate-100 text-slate-800 border-slate-300",
+      statusColor: "bg-subtle text-ink border-line-strong",
       leader: "Coordenação Pedagógica ACITE",
       deliverables: [
         "Manual do Formador AngoComp e kits pedagógicos multimédia",
@@ -52,7 +52,7 @@ export default function TimelineGantt() {
       title: "Pilotagem & Certificação de 2.500 Cidadãos",
       period: "Mês 24 – Mês 38 (Junho 2028 – Agosto 2029)",
       status: "Planeado",
-      statusColor: "bg-slate-100 text-slate-800 border-slate-300",
+      statusColor: "bg-subtle text-ink border-line-strong",
       leader: "Equipas de Campo Provinciais",
       deliverables: [
         "Ensaio quasi-experimental com grupo de controlo (N=600)",
@@ -66,7 +66,7 @@ export default function TimelineGantt() {
       title: "Construção do Índice ILDA & Transferência de Políticas",
       period: "Mês 36 – Mês 48 (Junho 2029 – Julho 2029)",
       status: "Planeado",
-      statusColor: "bg-slate-100 text-slate-800 border-slate-300",
+      statusColor: "bg-subtle text-ink border-line-strong",
       leader: "Investigador Principal & MESCTI / INE",
       deliverables: [
         "Cálculo e publicação do 1.º Índice de Literacia Digital de Angola (ILDA)",
@@ -80,7 +80,7 @@ export default function TimelineGantt() {
       title: "Gestão, Comunicação, FAIR Data & Auditoria",
       period: "Mês 01 – Mês 48 (Transversal)",
       status: "Activo / Transversal",
-      statusColor: "bg-blue-100 text-blue-900 border-blue-300",
+      statusColor: "bg-blue-50 text-blue-900 border-blue-200",
       leader: "Gabinete de Gestão do Projecto (ACITE)",
       deliverables: [
         "Publicação de 6 artigos científicos em revistas internacionais indexadas",
@@ -96,16 +96,16 @@ export default function TimelineGantt() {
       {workPackages.map((wp) => (
         <div 
           key={wp.code}
-          className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200 shadow-sm hover:border-slate-300 transition-all"
+          className="card card-hover p-5 sm:p-6 hover:border-line-strong transition-all"
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-line">
             <div className="flex items-center gap-3">
-              <span className="w-12 h-12 rounded-xl bg-[#0F2C59] text-white flex items-center justify-center font-display font-black text-base shadow">
+              <span className="w-12 h-12 rounded-md border border-line bg-subtle text-mukanda-indigo flex items-center justify-center font-mono font-semibold text-sm">
                 {wp.code}
               </span>
               <div>
-                <h4 className="font-display font-bold text-lg text-[#0F2C59]">{wp.title}</h4>
-                <div className="flex items-center gap-3 text-xs text-slate-500 mt-0.5">
+                <h4 className="font-display font-semibold text-lg text-ink">{wp.title}</h4>
+                <div className="flex items-center gap-3 text-xs text-ink-muted mt-0.5">
                   <span className="flex items-center gap-1 font-mono">
                     <Calendar className="w-3.5 h-3.5 text-mukanda-terracotta" />
                     <span>{wp.period}</span>
@@ -117,7 +117,7 @@ export default function TimelineGantt() {
             </div>
 
             <div className="flex items-center gap-3 self-start md:self-auto">
-              <span className={`px-3 py-1 rounded-full text-xs font-bold border ${wp.statusColor}`}>
+              <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${wp.statusColor}`}>
                 {wp.status}
               </span>
             </div>
@@ -126,7 +126,7 @@ export default function TimelineGantt() {
           {/* Deliverables List */}
           <div className="pt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
             {wp.deliverables.map((del, idx) => (
-              <div key={idx} className="p-3 rounded-lg bg-slate-50 border border-slate-100 flex items-start gap-2 text-xs text-slate-700">
+              <div key={idx} className="p-3 rounded-lg bg-subtle border border-line flex items-start gap-2 text-xs text-ink-soft">
                 <CheckCircle2 className="w-4 h-4 text-mukanda-emerald shrink-0 mt-0.5" />
                 <span>{del}</span>
               </div>
@@ -134,15 +134,15 @@ export default function TimelineGantt() {
           </div>
 
           {/* Micro Progress Bar */}
-          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="mt-4 pt-3 border-t border-line flex items-center justify-between gap-4 text-xs text-ink-muted">
             <span className="font-mono font-medium">Progresso Estimado da Fase:</span>
-            <div className="flex-1 max-w-xs bg-slate-100 rounded-full h-2 overflow-hidden">
+            <div className="flex-1 max-w-xs bg-subtle rounded-full h-2 overflow-hidden">
               <div 
-                className="bg-gradient-to-r from-mukanda-terracotta to-mukanda-gold h-full rounded-full transition-all"
+                className="bg-mukanda-indigo h-full rounded-full transition-all"
                 style={{ width: `${wp.progress}%` }}
               ></div>
             </div>
-            <span className="font-mono font-bold text-slate-700">{wp.progress}%</span>
+            <span className="font-mono font-semibold text-ink-soft">{wp.progress}%</span>
           </div>
         </div>
       ))}

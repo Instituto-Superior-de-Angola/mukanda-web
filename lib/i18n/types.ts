@@ -1,0 +1,187 @@
+export type Language = 'pt' | 'umb' | 'kmb' | 'kkg';
+
+export interface LanguageMeta {
+  code: Language;
+  name: string;
+  nativeName: string;
+  region: string;
+  flag: string;
+  description: string;
+}
+
+export interface TranslationDictionary {
+  common: {
+    projectName: string;
+    projectSubtitle: string;
+    institution: string;
+    institutionFull: string;
+    officialProgram: string;
+    version: string;
+    learnMore: string;
+    readMore: string;
+    viewAll: string;
+    back: string;
+    next: string;
+    previous: string;
+    finish: string;
+    submit: string;
+    search: string;
+    download: string;
+    verify: string;
+    copy: string;
+    copied: string;
+    loading: string;
+    success: string;
+    error: string;
+    close: string;
+    provinces: string;
+    luanda: string;
+    huila: string;
+    uige: string;
+    language: string;
+    selectLanguage: string;
+  };
+  nav: {
+    home: string;
+    about: string;
+    transparency: string;
+    questionnaires: string;
+    diagnostic: string;
+    recruitment: string;
+    brand: string;
+    validator: string;
+    contact: string;
+    progressDashboard: string;
+    skipToContent: string;
+  };
+  hero: {
+    kicker: string;
+    titleStart: string;
+    titleHighlight: string;
+    description: string;
+    ctaDiagnostic: string;
+    ctaTransparency: string;
+    trustDigComp: string;
+    trustFAIR: string;
+    cardTitle: string;
+    cardBadge: string;
+    cardRites: string;
+    cardDesc: string;
+    principalInvestigator: string;
+    sampleSize: string;
+    proponentEntity: string;
+  };
+  stats: {
+    certifiedCitizens: string;
+    certifiedDesc: string;
+    multipliers: string;
+    multipliersDesc: string;
+    pilotProvinces: string;
+    pilotProvincesDesc: string;
+    duration: string;
+    durationDesc: string;
+    baselineSample: string;
+    baselineDesc: string;
+    fairData: string;
+    fairDesc: string;
+  };
+  manifesto: {
+    kicker: string;
+    title: string;
+    titleHighlight: string;
+    p1: string;
+    p2: string;
+    quote: string;
+    teamLink: string;
+    col1Title: string;
+    col1Desc: string;
+    col2Title: string;
+    col2Desc: string;
+    col3Title: string;
+    col3Desc: string;
+    col4Title: string;
+    col4Desc: string;
+  };
+  dimensions: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    dim1Title: string;
+    dim1Desc: string;
+    dim1Angola: string;
+    dim2Title: string;
+    dim2Desc: string;
+    dim2Angola: string;
+    dim3Title: string;
+    dim3Desc: string;
+    dim3Angola: string;
+    dim4Title: string;
+    dim4Desc: string;
+    dim4Angola: string;
+    dim5Title: string;
+    dim5Desc: string;
+    dim5Angola: string;
+    ctaEvaluate: string;
+    ctaSurveys: string;
+  };
+  provincesSection: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    targetCertified: string;
+    targetTrainers: string;
+    targetSample: string;
+    prioritiesTitle: string;
+    residentCall: string;
+    residentDesc: string;
+    ctaApplyProvince: string;
+  };
+  ctaRecruitment: {
+    kicker: string;
+    title: string;
+    desc: string;
+    btnApply: string;
+    btnBrand: string;
+  };
+  footer: {
+    aboutText: string;
+    ethicsNotice: string;
+    durationLabel: string;
+    navigationHeader: string;
+    provincesHeader: string;
+    contactHeader: string;
+    principalInvestigatorLabel: string;
+    verifyBadgeBtn: string;
+    partnersKicker: string;
+    rightsReserved: string;
+    transparencyPolicy: string;
+    fairPrivacy: string;
+    ethicsChannel: string;
+  };
+  diagnosticPage: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    q1: string;
+    q2: string;
+    q3: string;
+    q4: string;
+    q5: string;
+    restart: string;
+    enrollCall: string;
+  };
+  recruitmentPage: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    formTitle: string;
+    fullName: string;
+    biNumber: string;
+    email: string;
+    phone: string;
+    province: string;
+    role: string;
+    motivation: string;
+    submit: string;
+  };
+}

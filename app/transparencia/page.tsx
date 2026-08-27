@@ -1,20 +1,15 @@
+'use client';
+
 import React from 'react';
+import PageHeader from '@/components/PageHeader';
 import TimelineGantt from '@/components/TimelineGantt';
-import { 
-  ShieldCheck, 
-  Lock, 
-  Eye, 
-  FileCheck2, 
-  Database, 
-  Download, 
-  AlertTriangle, 
-  Sparkles,
-  ExternalLink,
-  BookOpen
-} from 'lucide-react';
+import { ShieldCheck, Lock, Eye, FileCheck2, Database } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function TransparenciaPage() {
+  const { dict } = useTranslation();
+
   const auditPoints = [
     { title: "Auditoria Financeira Semestral", desc: "Contas e relatórios de despesas auditados por entidades externas independentes.", status: "Conforme" },
     { title: "Comité de Ética & TCLE", desc: "Consentimento informado por escrito para todos os 1.500 inquiridos e 2.500 formandos.", status: "Aprovado" },
@@ -23,38 +18,33 @@ export default function TransparenciaPage() {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Top Header */}
-        <div className="bg-[#0F2C59] text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          <div className="max-w-3xl space-y-4 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-mukanda-gold-light text-xs font-mono font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4 text-mukanda-emerald" />
-              <span>Governação, Prestação de Contas &amp; Dados Abertos</span>
-            </div>
-            <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
-              Painel de Transparência &amp; Progresso
-            </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              O Projecto Mukanda rege-se pelos mais elevados padrões de integridade científica, auditoria pública e transparência, mantendo salvaguardada a confidencialidade e a privacidade individual.
-            </p>
-          </div>
-        </div>
+    <>
+      <PageHeader
+        kicker="Governação, prestação de contas e dados abertos"
+        title="Painel de transparência e progresso"
+        lead={`O acompanhamento público do ${dict.common.projectName} cobre o estado de execução de cada pacote de trabalho, os entregáveis produzidos e os mecanismos de auditoria — salvaguardando sempre a confidencialidade dos participantes.`}
+        meta={[
+          { label: 'Última actualização', value: 'Agosto de 2026' },
+          { label: 'Pacotes de trabalho', value: 'WP1 a WP6' },
+          { label: 'Dados', value: 'FAIR · CC BY-NC 4.0' },
+          { label: 'Supervisão', value: 'Comité Científico Internacional' },
+        ]}
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-12">
         {/* 1. O Equilíbrio entre Transparência e Confidencialidade */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Box 1: O que é Público e Transparente */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-            <div className="flex items-center gap-3 text-mukanda-emerald font-display font-bold text-lg">
+          <div className="card p-6 sm:p-8 space-y-4">
+            <div className="flex items-center gap-3 text-mukanda-emerald font-display font-semibold text-lg">
               <Eye className="w-6 h-6" />
               <span>Transparência Pública Activa</span>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-[0.8125rem] text-ink-soft leading-relaxed">
               Elementos disponibilizados publicamente para consulta de cidadãos, comunidade académica e órgãos de controlo:
             </p>
-            <ul className="space-y-2 text-xs text-slate-700">
+            <ul className="space-y-2.5 text-[0.8125rem] text-ink-soft">
               <li className="flex items-start gap-2">
                 <FileCheck2 className="w-4 h-4 text-mukanda-emerald shrink-0 mt-0.5" />
                 <span>Sumário Executivo e Relatórios de Ponto de Situação e Evolução.</span>
@@ -75,15 +65,15 @@ export default function TransparenciaPage() {
           </div>
 
           {/* Box 2: Salvaguardas Éticas e Confidencialidade */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-            <div className="flex items-center gap-3 text-mukanda-terracotta font-display font-bold text-lg">
+          <div className="card p-6 sm:p-8 space-y-4">
+            <div className="flex items-center gap-3 text-mukanda-terracotta font-display font-semibold text-lg">
               <Lock className="w-6 h-6" />
               <span>Salvaguarda de Confidencialidade</span>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-[0.8125rem] text-ink-soft leading-relaxed">
               Informação sujeita a restrição de acesso e sigilo ético ao abrigo da legislação e das normas da ACITE:
             </p>
-            <ul className="space-y-2 text-xs text-slate-700">
+            <ul className="space-y-2.5 text-[0.8125rem] text-ink-soft">
               <li className="flex items-start gap-2">
                 <ShieldCheck className="w-4 h-4 text-mukanda-terracotta shrink-0 mt-0.5" />
                 <span>Dados pessoais e identificadores directos (Nomes, B.I., Contactos) dos participantes.</span>
@@ -109,12 +99,12 @@ export default function TransparenciaPage() {
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-mono font-bold text-mukanda-terracotta uppercase">Progresso em Tempo Real</span>
-              <h2 className="font-display font-black text-2xl sm:text-3xl text-[#0F2C59]">
+              <span className="kicker">Cronograma de execução</span>
+              <h2 className="font-display font-semibold text-2xl sm:text-3xl text-ink">
                 Roteiro de Entregáveis (2026–2029)
               </h2>
             </div>
-            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-slate-200 text-slate-700 self-start sm:self-auto">
+            <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-subtle border border-line text-ink-soft self-start sm:self-auto">
               Horizonte de 48 Meses
             </span>
           </div>
@@ -123,65 +113,71 @@ export default function TransparenciaPage() {
         </div>
 
         {/* 3. Princípios FAIR & Repositório Científico */}
-        <div className="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-          <div className="flex items-center gap-2 text-mukanda-indigo text-xs font-mono font-bold uppercase tracking-wider">
+        <div className="card p-6 sm:p-10 space-y-6">
+          <div className="flex items-center gap-2 text-mukanda-indigo text-xs font-mono font-semibold uppercase tracking-wider">
             <Database className="w-4 h-4 text-mukanda-gold" />
             <span>Ciência Aberta &amp; Reprodutibilidade</span>
           </div>
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-[#0F2C59]">
+          <h2 className="font-display font-semibold text-2xl sm:text-3xl text-ink">
             Compromisso com os Princípios FAIR (Data Management Plan)
           </h2>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-ink-soft text-sm leading-relaxed">
             Em conformidade com o <em>Anexo I (Plano de Gestão de Dados)</em>, todos os instrumentos, dicionários de variáveis e conjuntos de dados empíricos gerados pelo projecto obedecerão aos princípios internacionais <strong>FAIR (Findable, Accessible, Interoperable, Reusable)</strong>:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="font-display font-bold text-sm text-[#0F2C59]">1. Localizável (Findable)</div>
-              <p className="text-xs text-slate-600">Atribuição de identificadores persistentes (DOIs) a relatórios e bases de dados.</p>
+            <div className="p-4 rounded-xl bg-subtle border border-line space-y-1">
+              <div className="font-display font-semibold text-sm text-ink">1. Localizável (Findable)</div>
+              <p className="text-xs text-ink-soft">Atribuição de identificadores persistentes (DOIs) a relatórios e bases de dados.</p>
             </div>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="font-display font-bold text-sm text-[#0F2C59]">2. Acessível (Accessible)</div>
-              <p className="text-xs text-slate-600">Repositório institucional aberto via protocolo padrão HTTPS com metadados abertos.</p>
+            <div className="p-4 rounded-xl bg-subtle border border-line space-y-1">
+              <div className="font-display font-semibold text-sm text-ink">2. Acessível (Accessible)</div>
+              <p className="text-xs text-ink-soft">Repositório institucional aberto via protocolo padrão HTTPS com metadados abertos.</p>
             </div>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="font-display font-bold text-sm text-[#0F2C59]">3. Interoperável (Interoperable)</div>
-              <p className="text-xs text-slate-600">Formatos abertos (.CSV, .JSON, .PDF, .TYP) com vocabulários controlados.</p>
+            <div className="p-4 rounded-xl bg-subtle border border-line space-y-1">
+              <div className="font-display font-semibold text-sm text-ink">3. Interoperável (Interoperable)</div>
+              <p className="text-xs text-ink-soft">Formatos abertos (.CSV, .JSON, .PDF, .TYP) com vocabulários controlados.</p>
             </div>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-              <div className="font-display font-bold text-sm text-[#0F2C59]">4. Reutilizável (Reusable)</div>
-              <p className="text-xs text-slate-600">Licenças Creative Commons (CC BY-NC 4.0) permitindo investigação secundária.</p>
+            <div className="p-4 rounded-xl bg-subtle border border-line space-y-1">
+              <div className="font-display font-semibold text-sm text-ink">4. Reutilizável (Reusable)</div>
+              <p className="text-xs text-ink-soft">Licenças Creative Commons (CC BY-NC 4.0) permitindo investigação secundária.</p>
             </div>
           </div>
         </div>
 
         {/* 4. Auditoria e Controlo de Qualidade */}
-        <div className="bg-[#0F2C59] text-white rounded-2xl p-6 sm:p-10 shadow-xl space-y-6">
-          <div className="max-w-2xl space-y-2">
-            <span className="text-xs font-mono font-bold text-mukanda-gold-light uppercase">Auditoria &amp; Conformidade</span>
-            <h2 className="font-display font-black text-2xl sm:text-3xl text-white">
-              Garantia de Qualidade e Supervisão Externa
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300">
-              Mecanismos institucionais contínuos para assegurar a conformidade orçamental e metodológica.
-            </p>
-          </div>
+        <section className="card p-6 sm:p-10">
+          <p className="kicker">
+            <span className="w-6 border-t border-mukanda-terracotta" aria-hidden />
+            Auditoria e conformidade
+          </p>
+          <h2 className="mt-4 font-display font-semibold text-2xl sm:text-3xl text-ink">
+            Garantia de qualidade e supervisão externa
+          </h2>
+          <p className="mt-3 prose-mukanda max-w-prose">
+            Mecanismos institucionais permanentes que asseguram a conformidade orçamental, ética e
+            metodológica do programa, com registo documental acessível às entidades de controlo.
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {auditPoints.map((pt, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono font-bold text-mukanda-emerald-light">{pt.status}</span>
-                  <ShieldCheck className="w-4 h-4 text-mukanda-gold" />
-                </div>
-                <h4 className="font-display font-bold text-sm text-white">{pt.title}</h4>
-                <p className="text-xs text-slate-300">{pt.desc}</p>
-              </div>
+          <ul className="mt-8 divide-y divide-line border-t border-line">
+            {auditPoints.map((pt) => (
+              <li key={pt.title} className="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
+                <h3 className="sm:col-span-4 font-display font-semibold text-[0.9375rem] text-ink">
+                  {pt.title}
+                </h3>
+                <p className="sm:col-span-6 text-[0.8125rem] leading-relaxed text-ink-soft">{pt.desc}</p>
+                <span className="sm:col-span-2 sm:text-right">
+                  <span className="inline-flex items-center gap-1.5 text-2xs font-medium text-mukanda-emerald">
+                    <span className="w-1.5 h-1.5 rounded-full bg-mukanda-emerald" aria-hidden />
+                    {pt.status}
+                  </span>
+                </span>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
 
       </div>
-    </div>
+    </>
   );
 }
