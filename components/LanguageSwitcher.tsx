@@ -61,7 +61,7 @@ export default function LanguageSwitcher({ variant = 'compact', className = '' }
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="flex items-center gap-2 px-2.5 py-1.5 text-xs font-medium text-ink-soft hover:text-ink bg-white hover:bg-subtle border border-line rounded-md transition-colors shadow-2xs"
+        className="flex items-center gap-2 px-2.5 py-1.5 text-xs font-medium text-ink-soft hover:text-ink bg-white hover:bg-subtle border border-line rounded-md transition-colors"
       >
         <span className="text-sm">{currentMeta.flag}</span>
         <span className="font-semibold text-ink">{currentMeta.nativeName}</span>
