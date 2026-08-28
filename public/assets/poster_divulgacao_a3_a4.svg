@@ -165,7 +165,7 @@
   <!-- Footer Institutional Bar -->
   <g transform="translate(100, 1500)">
     <line x1="0" y1="0" x2="1000" y2="0" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1" />
-    <text x="0" y="50" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#94A3B8">Entidade Proponente: ACITE (Instituto Superior de Angola)</text>
+    <text x="0" y="50" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#94A3B8">Entidade Proponente: ACITE — Academia de Ciências Sociais e Tecnologias</text>
     <text x="0" y="75" font-family="'Inter', sans-serif" font-size="12" font-weight="400" fill="#64748B">Parceiros &amp; Financiadores Previstos: FUNDECIT • União Europeia (CAP4) • UNESCO • Sector Privado</text>
     <text x="1000" y="60" text-anchor="end" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="700" fill="#F59E0B">CIÊNCIA • INCLUSÃO • SOBERANIA</text>
   </g>

@@ -114,7 +114,7 @@ export default function Footer() {
               </p>
               <p className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-ink-muted shrink-0 mt-0.5" aria-hidden />
-                <span>ACITE — Instituto Superior de Angola, Luanda</span>
+                <span>ACITE — Academia de Ciências Sociais e Tecnologias, Luanda</span>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-ink-muted shrink-0" aria-hidden />

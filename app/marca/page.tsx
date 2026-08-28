@@ -1,13 +1,8 @@
-'use client';
-
 import PageHeader from '@/components/PageHeader';
 import React from 'react';
 import { Download } from 'lucide-react';
-import Link from 'next/link';
-import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function MarcaPage() {
-  const { dict } = useTranslation();
 
   const brandAssets = [
     {

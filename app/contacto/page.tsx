@@ -60,7 +60,7 @@ export default function ContactoPage() {
                   <MapPin className="w-5 h-5 text-mukanda-terracotta shrink-0 mt-0.5" />
                   <div>
                     <strong>ACITE — Academia de Ciências Sociais e Tecnologias</strong><br />
-                    Instituto Superior de Angola<br />
+                    Entidade proponente do Projecto Mukanda<br />
                     Luanda, República de Angola
                   </div>
                 </div>

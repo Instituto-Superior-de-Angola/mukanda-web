@@ -20,7 +20,7 @@ export default function SobrePage() {
     {
       name: "Conselho Científico da ACITE",
       role: "Órgão Científico Proponente & Supervisão",
-      institution: "Instituto Superior de Angola",
+      institution: "Academia de Ciências Sociais e Tecnologias (ACITE)",
       focus: "Homologação Epistemológica, Certificação Docente & Ética",
       badge: "Supervisão Científica"
     },
@@ -49,7 +49,7 @@ export default function SobrePage() {
         title={`Sobre o ${dict.common.projectName}`}
         lead="Concepção, validação e pilotagem de um instrumento científico de referência para o diagnóstico, a certificação e a promoção da literacia digital em Angola."
         meta={[
-          { label: 'Proponente', value: 'ACITE — Instituto Superior de Angola' },
+          { label: 'Proponente', value: 'ACITE — Academia de Ciências Sociais e Tecnologias' },
           { label: 'Investigador principal', value: 'Eng. Benone Marcos, PhD' },
           { label: 'Execução', value: 'Julho 2026 – Julho 2029' },
           { label: 'Estrutura', value: 'Seis pacotes de trabalho (WP1–WP6)' },

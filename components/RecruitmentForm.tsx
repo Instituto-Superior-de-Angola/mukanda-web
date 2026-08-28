@@ -80,11 +80,12 @@ export default function RecruitmentForm() {
       } else {
         setErrorMessage(data.message || 'Ocorreu um erro ao submeter a sua candidatura. Tente novamente.');
       }
-    } catch (err) {
-      // Fallback local code generation if offline
-      const mockCode = `MUK-CAND-${Math.floor(100000 + Math.random() * 900000)}`;
-      setTrackingCode(mockCode);
-      setSubmissionSuccess(true);
+    } catch {
+      // Nunca simular sucesso: o candidato tem de saber que a submissão não chegou ao
+      // servidor, sob pena de julgar-se inscrito sem o estar.
+      setErrorMessage(
+        'Não foi possível contactar o servidor. Verifique a ligação à Internet e submeta novamente.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -229,7 +230,7 @@ export default function RecruitmentForm() {
                 required
                 value={formData.biNumber}
                 onChange={(e) => setFormData({ ...formData, biNumber: e.target.value })}
-                placeholder="Ex: 004819203LA042"
+                placeholder="Ex: 000000000LA000"
                 className="field font-mono"
               />
             </div>

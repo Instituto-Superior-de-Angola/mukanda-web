@@ -19,7 +19,6 @@ const STORAGE_KEY = 'mukanda_preferred_lang';
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     try {
@@ -28,10 +27,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setLanguageState(saved);
         document.documentElement.lang = saved;
       }
-    } catch (e) {
-      // ignore in SSR
+    } catch {
+      // localStorage indisponível (SSR ou armazenamento bloqueado)
     }
-    setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -40,8 +38,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       try {
         localStorage.setItem(STORAGE_KEY, lang);
         document.documentElement.lang = lang;
-      } catch (e) {
-        // ignore
+      } catch {
+        // localStorage indisponível: a escolha vale apenas para esta sessão
       }
     }
   };

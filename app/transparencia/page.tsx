@@ -4,7 +4,6 @@ import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import TimelineGantt from '@/components/TimelineGantt';
 import { ShieldCheck, Lock, Eye, FileCheck2, Database } from 'lucide-react';
-import Link from 'next/link';
 import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function TransparenciaPage() {

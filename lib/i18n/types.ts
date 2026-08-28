@@ -43,6 +43,10 @@ export interface TranslationDictionary {
   };
   nav: {
     home: string;
+    /** Rótulos dos grupos do menu principal (submenus) */
+    groupProject: string;
+    groupResearch: string;
+    groupParticipate: string;
     about: string;
     transparency: string;
     questionnaires: string;

@@ -3,73 +3,63 @@
 import React, { useState } from 'react';
 import { Search, ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';
 
+/** Resposta do serviço de verificação (ver app/api/validar/route.ts). */
+interface CertificadoVerificado {
+  code: string;
+  recipient: string;
+  biNumber: string;
+  level: string;
+  province: string;
+  issueDate: string;
+  issuer: string;
+  status?: string;
+  hours?: string;
+  notice?: string;
+}
+
 export default function CertificateLookup() {
   const [code, setCode] = useState('');
   const [isSearching, setIsSearching] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<CertificadoVerificado | null>(null);
   const [notFound, setNotFound] = useState(false);
 
-  const mockDatabase: Record<string, any> = {
-    'MUK-2026-002500': {
-      code: 'MUK-2026-002500',
-      recipient: 'Manuel António da Silva',
-      biNumber: '004819203LA042',
-      level: 'Nível Intermédio B2 (Quadro AngoComp)',
-      hours: '60 Horas',
-      province: 'Luanda',
-      cohort: 'Turma Piloto 01 / 2026',
-      issueDate: '15 de Agosto de 2026',
-      status: 'VÁLIDO & HOMOLOGADO',
-      issuer: 'ACITE (Instituto Superior de Angola)',
-      signatories: 'Eng. Benone Marcos, PhD (Investigador Principal) & Conselho Científico da ACITE'
-    },
-    'MUK-2026-00120': {
-      code: 'MUK-2026-00120',
-      recipient: 'Maria Teresa dos Santos',
-      biNumber: '007129482HU021',
-      level: 'Formador(a) Multiplicador(a) AngoComp (Nível C1)',
-      hours: '120 Horas',
-      province: 'Huíla (Lubango)',
-      cohort: 'Capacitação Docente WP3',
-      issueDate: '20 de Setembro de 2026',
-      status: 'VÁLIDO & HOMOLOGADO',
-      issuer: 'ACITE (Instituto Superior de Angola)',
-      signatories: 'Eng. Benone Marcos, PhD & Coordenação Pedagógica'
-    }
-  };
+  const [erro, setErro] = useState<string | null>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
+  /**
+   * A verificação é feita no servidor, contra o registo de certificados.
+   * A validade nunca é inferida no cliente a partir do formato do código: um validador
+   * que aceitasse qualquer código com o prefixo correcto seria um oráculo de falsificação.
+   */
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!code.trim()) return;
+    const consulta = code.trim().toUpperCase();
+    if (!consulta) return;
 
     setIsSearching(true);
     setNotFound(false);
+    setErro(null);
     setResult(null);
 
-    setTimeout(() => {
-      const cleanCode = code.trim().toUpperCase();
-      if (mockDatabase[cleanCode]) {
-        setResult(mockDatabase[cleanCode]);
-      } else if (cleanCode.startsWith('MUK-')) {
-        // Generate simulated valid certificate for demo
-        setResult({
-          code: cleanCode,
-          recipient: 'Cidadão Certificado(a) de Demonstração',
-          biNumber: '00XXXXXXXXXLA000',
-          level: 'Nível Intermédio B2 (Quadro AngoComp)',
-          hours: '60 Horas',
-          province: 'Luanda / Huíla / Uíge',
-          cohort: 'Programa de Inclusão Nacional',
-          issueDate: 'Agosto de 2026',
-          status: 'VÁLIDO & HOMOLOGADO',
-          issuer: 'ACITE (Instituto Superior de Angola)',
-          signatories: 'Eng. Benone Marcos, PhD & Conselho Científico'
-        });
+    try {
+      const resposta = await fetch(`/api/validar?code=${encodeURIComponent(consulta)}`, {
+        cache: 'no-store',
+      });
+      const dados = await resposta.json();
+
+      if (resposta.ok && dados.valid) {
+        setResult(dados);
+      } else if (resposta.status === 429) {
+        setErro('Demasiados pedidos consecutivos. Aguarde um momento e tente novamente.');
+      } else if (resposta.status === 400) {
+        setErro(dados.message ?? 'Formato de código inválido.');
       } else {
         setNotFound(true);
       }
+    } catch {
+      setErro('Não foi possível contactar o serviço de verificação. Tente novamente.');
+    } finally {
       setIsSearching(false);
-    }, 600);
+    }
   };
 
   return (
@@ -125,7 +115,7 @@ export default function CertificateLookup() {
             </div>
 
             <div>
-              <span className="text-xs text-ink-muted font-medium">Documento de Identificação (B.I.):</span>
+              <span className="text-xs text-ink-muted font-medium">Documento de identificação (parcial):</span>
               <div className="font-mono font-semibold text-ink">{result.biNumber}</div>
             </div>
 
@@ -150,9 +140,17 @@ export default function CertificateLookup() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-emerald-200/60 text-2xs text-ink-soft font-mono">
-            Homologado por: {result.signatories}
-          </div>
+          {result.notice && (
+            <p className="pt-3 border-t border-emerald-200/60 text-2xs text-ink-soft">
+              {result.notice}
+            </p>
+          )}
+        </div>
+      )}
+
+      {erro && (
+        <div className="p-5 rounded-lg bg-amber-50 border border-amber-200 text-center">
+          <p className="text-[0.8125rem] text-amber-900">{erro}</p>
         </div>
       )}
 
