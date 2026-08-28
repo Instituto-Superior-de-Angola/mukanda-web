@@ -209,14 +209,27 @@ const quizQuestions: Question[] = [
 
 export default function DiagnosticQuiz() {
   const [currentIdx, setCurrentIdx] = useState(0);
+  /**
+   * Resposta dada a cada pergunta, identificada pelo **índice** da opção escolhida.
+   *
+   * Guardar a pontuação em vez do índice fazia com que, nas perguntas em que duas opções
+   * valem o mesmo (por exemplo a 6, com pontuações 1, 4, 1, 4), ambas aparecessem marcadas
+   * em simultâneo: a comparação `answers[id] === opt.points` era verdadeira para as duas.
+   */
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isCompleted, setIsCompleted] = useState(false);
 
   const currentQ = quizQuestions[currentIdx];
   const progressPercent = Math.round(((currentIdx) / quizQuestions.length) * 100);
 
-  const handleSelectOption = (points: number) => {
-    setAnswers({ ...answers, [currentQ.id]: points });
+  /** Pontuação correspondente à opção escolhida numa pergunta; 0 se não houver resposta. */
+  const pontuacaoDe = (pergunta: Question): number => {
+    const escolha = answers[pergunta.id];
+    return escolha === undefined ? 0 : pergunta.options[escolha].points;
+  };
+
+  const handleSelectOption = (optionIndex: number) => {
+    setAnswers({ ...answers, [currentQ.id]: optionIndex });
   };
 
   const handleNext = () => {
@@ -253,7 +266,7 @@ export default function DiagnosticQuiz() {
     const maxTotal = quizQuestions.length * 4; // 60
 
     quizQuestions.forEach((q) => {
-      const pts = answers[q.id] ?? 0;
+      const pts = pontuacaoDe(q);
       dimScores[q.dimId].score += pts;
       totalScore += pts;
     });
@@ -409,13 +422,20 @@ export default function DiagnosticQuiz() {
       </div>
 
       {/* Options List */}
-      <div className="space-y-3 mb-8">
+      <div
+        className="space-y-3 mb-8"
+        role="radiogroup"
+        aria-label={currentQ.question}
+      >
         {currentQ.options.map((opt, idx) => {
-          const isSelected = answers[currentQ.id] === opt.points;
+          const isSelected = answers[currentQ.id] === idx;
           return (
             <button
               key={idx}
-              onClick={() => handleSelectOption(opt.points)}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
+              onClick={() => handleSelectOption(idx)}
               className={`w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
                 isSelected
                   ? 'bg-mukanda-indigo/5 border-mukanda-indigo'
