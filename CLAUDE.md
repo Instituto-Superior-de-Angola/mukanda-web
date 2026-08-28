@@ -89,10 +89,17 @@ primeiro, propagar depois, e referir a propagação no PR.
 ## Entrega
 
 Ramo → `npm run verificar` → auto-revisão do diff → commit → push → `gh pr create` → CI verde
-→ revisão humana → merge → publicação automática no Vercel.
+→ revisão humana → merge → publicação automática pela integração Git do Vercel.
 
 Procedimento detalhado: skill [`entrega-git`](../.claude/skills/entrega-git/SKILL.md).
-**Nunca commitar nem fazer push directamente para `main`.**
+Mecânica da publicação e da protecção de produção: [`.github/PUBLICACAO.md`](.github/PUBLICACAO.md).
+
+**Nunca commitar nem fazer push directamente para `main`** — além de regra, `main` tem
+protecção de ramo que o recusa.
+
+A publicação **não** passa pelo GitHub Actions: quem publica é a integração Git do Vercel,
+assim que `main` avança. Por isso o portão está na fusão do Pull Request, através das
+verificações obrigatórias, e não num workflow posterior.
 
 ## Dívida conhecida
 
