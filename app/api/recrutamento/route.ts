@@ -9,7 +9,9 @@ import {
   validarBI,
   validarEmail,
   validarEnumeracao,
+  validarORCID,
   validarTelefone,
+  PERFIS_COM_ORCID,
 } from '@/lib/seguranca/validacao';
 
 export const dynamic = 'force-dynamic';
@@ -103,6 +105,34 @@ export async function POST(request: Request) {
       { success: false, message: 'Motivação demasiado extensa.', fields: ['motivation'] },
       { status: 422, headers: CABECALHOS_SEM_CACHE }
     );
+  }
+
+  // ORCID: opcional, mas verificado quando preenchido — inclusive o dígito de controlo.
+  // Só é aceite nos perfis que o pedem: um identificador enviado por um perfil que não o
+  // solicita é recolha de dados sem finalidade declarada e é recusado.
+  const orcidPreenchido = typeof b.orcid === 'string' && b.orcid.trim() !== '';
+  if (orcidPreenchido) {
+    const perfilPedeORCID = (PERFIS_COM_ORCID as readonly string[]).includes(campos.role as string);
+    if (!perfilPedeORCID) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'O identificador ORCID só se aplica às candidaturas a formador(a) ou investigador(a).',
+          fields: ['orcid'],
+        },
+        { status: 422, headers: CABECALHOS_SEM_CACHE }
+      );
+    }
+    if (validarORCID(b.orcid) === null) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Identificador ORCID inválido. Verifique os 16 dígitos e o dígito de controlo.',
+          fields: ['orcid'],
+        },
+        { status: 422, headers: CABECALHOS_SEM_CACHE }
+      );
+    }
   }
 
   // O consentimento é condição de tratamento: verificado no servidor.

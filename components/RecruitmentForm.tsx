@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Users, Send, CheckCircle2, Briefcase, MapPin, GraduationCap, FileText, Sparkles, AlertCircle } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n/LanguageContext';
+import { validarORCID } from '@/lib/seguranca/validacao';
 
 export default function RecruitmentForm() {
   const { dict } = useTranslation();
@@ -17,10 +18,15 @@ export default function RecruitmentForm() {
     municipality: '',
     academicLevel: 'Licenciatura (Em Curso ou Concluída)',
     institution: '',
+    orcid: '',
     experience: '',
     motivation: '',
     agreeDataProtection: false
   });
+
+  /** Perfis que assinam produção científica ou formativa e a quem se pede o ORCID. */
+  const exigeORCID = formData.role === 'formador' || formData.role === 'investigador_jr';
+  const orcidInvalido = exigeORCID && formData.orcid.trim() !== '' && !validarORCID(formData.orcid);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
@@ -60,6 +66,11 @@ export default function RecruitmentForm() {
 
     if (!formData.agreeDataProtection) {
       setErrorMessage('Por favor aceite o termo de tratamento de dados e consentimento ético.');
+      return;
+    }
+
+    if (orcidInvalido) {
+      setErrorMessage('O identificador ORCID indicado não é válido. Corrija-o ou deixe o campo vazio.');
       return;
     }
 
@@ -129,6 +140,7 @@ export default function RecruitmentForm() {
               municipality: '',
               academicLevel: 'Licenciatura (Em Curso ou Concluída)',
               institution: '',
+              orcid: '',
               experience: '',
               motivation: '',
               agreeDataProtection: false
@@ -329,6 +341,53 @@ export default function RecruitmentForm() {
                 className="field"
               />
             </div>
+
+            {/*
+              O ORCID identifica de forma persistente quem produz investigação. É pedido aos
+              perfis que assinam produção científica ou material formativo — investigador(a)
+              júnior e formador(a) — e não aos restantes, para não pedir dados sem finalidade.
+            */}
+            {exigeORCID && (
+              <div className="sm:col-span-2">
+                <label htmlFor="orcid" className="block text-xs font-semibold text-ink-soft mb-1">
+                  Identificador ORCID
+                </label>
+                <input
+                  id="orcid"
+                  type="text"
+                  inputMode="numeric"
+                  value={formData.orcid}
+                  onChange={(e) => setFormData({ ...formData, orcid: e.target.value })}
+                  placeholder="0000-0002-1825-0097"
+                  aria-describedby="orcid-ajuda"
+                  aria-invalid={orcidInvalido || undefined}
+                  className={`field font-mono ${orcidInvalido ? 'border-mukanda-terracotta' : ''}`}
+                />
+                <p id="orcid-ajuda" className="mt-1.5 text-2xs text-ink-muted leading-relaxed">
+                  {orcidInvalido ? (
+                    <span className="text-mukanda-terracotta font-medium">
+                      Identificador inválido. Confirme os 16 dígitos — o último carácter é um
+                      dígito de controlo e pode ser «X».
+                    </span>
+                  ) : (
+                    <>
+                      Opcional. Permite associar a sua produção científica ao projecto e creditar
+                      correctamente a autoria dos materiais. Se ainda não tiver um, pode criá-lo
+                      gratuitamente em{' '}
+                      <a
+                        href="https://orcid.org/register"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-mukanda-indigo hover:text-mukanda-terracotta underline"
+                      >
+                        orcid.org
+                      </a>
+                      .
+                    </>
+                  )}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 

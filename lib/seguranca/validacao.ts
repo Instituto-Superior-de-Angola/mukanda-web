@@ -65,6 +65,44 @@ export function mascararBI(bi: string): string {
   return '•'.repeat(9) + compacto.slice(9);
 }
 
+/** Perfis para os quais o identificador ORCID é pedido no formulário de candidatura. */
+export const PERFIS_COM_ORCID = ['formador', 'investigador_jr'] as const;
+
+/**
+ * Valida um identificador ORCID.
+ *
+ * Formato: 16 dígitos em quatro grupos de quatro, sendo o último carácter um dígito de
+ * controlo que pode ser `X`. Aceita a forma nua (`0000-0002-1825-0097`) e o URL
+ * (`https://orcid.org/0000-0002-1825-0097`), devolvendo sempre a forma nua normalizada.
+ *
+ * Verifica o dígito de controlo pelo algoritmo ISO 7064 MOD 11-2, especificado pelo ORCID:
+ * uma sequência de 16 dígitos arbitrária é recusada, não apenas uma com formato errado.
+ */
+export function validarORCID(valor: unknown): string | null {
+  const texto = normalizarTexto(valor, 60);
+  if (!texto) return null;
+
+  const compacto = texto
+    .replace(/^https?:\/\/(?:www\.)?orcid\.org\//i, '')
+    .replace(/[\s-]/g, '')
+    .toUpperCase();
+
+  if (!/^\d{15}[\dX]$/.test(compacto)) return null;
+
+  // ISO 7064 MOD 11-2 sobre os 15 primeiros dígitos.
+  let total = 0;
+  for (let i = 0; i < 15; i += 1) {
+    total = (total + Number(compacto[i])) * 2;
+  }
+  const resto = total % 11;
+  const esperado = (12 - resto) % 11;
+  const digitoControlo = esperado === 10 ? 'X' : String(esperado);
+
+  if (compacto[15] !== digitoControlo) return null;
+
+  return `${compacto.slice(0, 4)}-${compacto.slice(4, 8)}-${compacto.slice(8, 12)}-${compacto.slice(12)}`;
+}
+
 /** Garante que um valor pertence a um conjunto fechado. */
 export function validarEnumeracao<T extends string>(
   valor: unknown,
