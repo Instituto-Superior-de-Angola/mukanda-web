@@ -24,7 +24,7 @@
     <!-- ACITE Logo Text Left -->
     <text x="0" y="35" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#0F2C59" letter-spacing="2">ACITE</text>
     <text x="0" y="58" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748B">Academia de Ciências Sociais e Tecnologias</text>
-    <text x="0" y="74" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#94A3B8">Entidade Proponente do Projecto Mukanda</text>
+    <text x="0" y="74" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#94A3B8">Entidade proponente • Luanda, Angola</text>
 
     <!-- Project Mukanda Centered -->
     <text x="607" y="30" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#FF6B35" letter-spacing="5">PROJECTO MUKANDA</text>

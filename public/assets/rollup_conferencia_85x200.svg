@@ -21,7 +21,7 @@
   <!-- Top Institutional Bar -->
   <g transform="translate(60, 60)">
     <text x="0" y="30" font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="700" fill="#F59E0B" letter-spacing="4">ACADEMIA DE CIÊNCIAS SOCIAIS E TECNOLOGIAS</text>
-    <text x="0" y="55" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#94A3B8">ACITE • Entidade Proponente do Projecto Mukanda</text>
+    <text x="0" y="55" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#94A3B8">ACITE • Luanda, República de Angola</text>
     <line x1="0" y1="80" x2="730" y2="80" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="1" />
   </g>
 
