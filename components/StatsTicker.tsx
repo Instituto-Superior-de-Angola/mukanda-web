@@ -11,7 +11,7 @@ export default function StatsTicker() {
     { value: dict.stats.multipliers, label: dict.stats.multipliersDesc, note: 'Capacitação provincial (WP3)' },
     { value: dict.stats.baselineSample, label: dict.stats.baselineDesc, note: 'Inquérito representativo (WP1)' },
     { value: dict.stats.pilotProvinces, label: dict.stats.pilotProvincesDesc, note: 'Luanda, Huíla e Uíge' },
-    { value: dict.stats.duration, label: dict.stats.durationDesc, note: 'Julho 2026 – Julho 2029' },
+    { value: dict.stats.duration, label: dict.stats.durationDesc, note: 'Setembro 2026 – Agosto 2030' },
     { value: dict.stats.fairData, label: dict.stats.fairDesc, note: 'Repositório auditável' },
   ];
 
