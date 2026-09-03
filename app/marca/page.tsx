@@ -6,13 +6,6 @@ export default function MarcaPage() {
 
   const brandAssets = [
     {
-      title: "Manual de Identidade Visual Oficial (PDF)",
-      desc: "Documento completo diagramado com regras de aplicação, grids, tipografia, co-branding e normas gráficas.",
-      file: "/docs/manual_identidade_visual_mukanda.pdf",
-      format: "PDF de Alta Resolução",
-      badge: "Documento Oficial"
-    },
-    {
       title: "Logótipo Principal (Versão Horizontal)",
       desc: `Versão oficial colorida com símbolo, tipografia MUKANDA e subtítulo AngoComp.`,
       file: "/assets/logo-mukanda-principal.svg",
@@ -32,20 +25,6 @@ export default function MarcaPage() {
       file: "/assets/logo-mukanda-simbolo.svg",
       format: "Vector SVG",
       badge: "Ícone & Símbolo"
-    },
-    {
-      title: "Logótipo com Chancela ACITE",
-      desc: "Versão protocolar e institucional para relatórios oficiais e apresentações conjuntas.",
-      file: "/assets/logo-mukanda-com-chancela-acite.svg",
-      format: "Vector SVG",
-      badge: "Co-Branding"
-    },
-    {
-      title: "Selo Oficial de Certificação AngoComp",
-      desc: "Selo dourado de garantia de proficiência digital para certificados e diplomas.",
-      file: "/assets/selo-certificacao-angocomp.svg",
-      format: "Vector SVG",
-      badge: "Selo de Garantia"
     },
     {
       title: "Infográfico das 5 Dimensões AngoComp",
@@ -80,9 +59,9 @@ export default function MarcaPage() {
       <PageHeader
         kicker="Identidade visual e media kit"
         title="Marca e recursos institucionais"
-        lead="Directrizes de aplicação da marca, paleta cromática e activos oficiais do Projecto Mukanda, para uso por parceiros institucionais, órgãos de comunicação social e equipas de campo."
+        lead="Directrizes de aplicação da marca, paleta cromática e logótipos do Projecto Mukanda, para uso por parceiros institucionais e órgãos de comunicação social. O manual completo, os modelos de certificado, o selo de certificação e as peças protocolares são facultados pela coordenação mediante pedido fundamentado."
         meta={[
-          { label: 'Manual', value: 'Identidade visual em PDF' },
+          { label: 'Manual', value: 'Mediante pedido à coordenação' },
           { label: 'Logótipos', value: 'SVG vectorial, todas as variantes' },
           { label: 'Uso', value: 'Mediante respeito pelas directrizes' },
           { label: 'Contacto', value: 'investigacao@acite.ao' },
@@ -96,7 +75,7 @@ export default function MarcaPage() {
             <div>
               <span className="kicker">Activos Digitais</span>
               <h2 className="font-display font-semibold text-2xl sm:text-3xl text-ink">
-                Descarregar Logótipos e Documentos
+                Descarregar logótipos
               </h2>
             </div>
           </div>

@@ -25,15 +25,6 @@ export default function Footer() {
     { nome: dict.common.uige, tipo: 'Predominantemente rural', dados: '700 cidadãos · 35 formadores' },
   ];
 
-  const parceiros = [
-    'ACITE (entidade proponente)',
-    'FUNDECIT / MESCTI',
-    'União Europeia — Programa CAP4',
-    'UNESCO',
-    'INE Angola',
-    'Sector privado de telecomunicações',
-  ];
-
   return (
     <footer className="border-t border-line bg-subtle text-ink-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -135,17 +126,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Parcerias */}
-        <div className="mt-12 pt-8 border-t border-line">
-          <h2 className="text-2xs font-semibold uppercase tracking-kicker text-ink-muted text-center">
-            {dict.footer.partnersKicker}
-          </h2>
-          <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-2xs text-ink-soft">
-            {parceiros.map((p) => (
-              <li key={p} className="whitespace-nowrap">{p}</li>
-            ))}
-          </ul>
-        </div>
       </div>
 
       {/* Barra legal */}

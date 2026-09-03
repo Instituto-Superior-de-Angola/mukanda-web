@@ -9,11 +9,14 @@ import { useTranslation } from '@/lib/i18n/LanguageContext';
 export default function TransparenciaPage() {
   const { dict } = useTranslation();
 
+  // Mecanismos previstos. Enquanto a execução não arrancar, o estado é «previsto»:
+  // declarar conformidade ou aprovação antes de existir acto que as sustente seria
+  // uma afirmação sem suporte documental.
   const auditPoints = [
-    { title: "Auditoria Financeira Semestral", desc: "Contas e relatórios de despesas auditados por entidades externas independentes.", status: "Conforme" },
-    { title: "Comité de Ética & TCLE", desc: "Consentimento informado por escrito para todos os 1.500 inquiridos e 2.500 formandos.", status: "Aprovado" },
-    { title: "Anonimização de Microdados", desc: "Supressão total de identificadores directos antes da publicação em repositório FAIR.", status: "Vigente" },
-    { title: "Supervisão do CCI", desc: "Comité Científico Internacional com actas e pareceres metodológicos arquivados.", status: "Ativo" }
+    { title: "Auditoria financeira semestral", desc: "Contas e relatórios de despesa auditados por entidade externa independente.", status: "Previsto" },
+    { title: "Parecer do Comité de Ética", desc: "Submissão do protocolo e dos instrumentos antes de qualquer recolha em campo.", status: "A submeter" },
+    { title: "Anonimização de microdados", desc: "Supressão de identificadores directos antes de qualquer publicação ou depósito.", status: "Previsto" },
+    { title: "Supervisão científica independente", desc: "Comité Científico Internacional com actas e pareceres metodológicos arquivados.", status: "A constituir" }
   ];
 
   return (
@@ -23,7 +26,7 @@ export default function TransparenciaPage() {
         title="Painel de transparência e progresso"
         lead={`O acompanhamento público do ${dict.common.projectName} cobre o estado de execução de cada pacote de trabalho, os entregáveis produzidos e os mecanismos de auditoria — salvaguardando sempre a confidencialidade dos participantes.`}
         meta={[
-          { label: 'Última actualização', value: 'Agosto de 2026' },
+          { label: 'Estado', value: 'Em preparação' },
           { label: 'Pacotes de trabalho', value: 'WP1 a WP6' },
           { label: 'Dados', value: 'FAIR · CC BY-NC 4.0' },
           { label: 'Supervisão', value: 'Comité Científico Internacional' },
@@ -46,7 +49,7 @@ export default function TransparenciaPage() {
             <ul className="space-y-2.5 text-[0.8125rem] text-ink-soft">
               <li className="flex items-start gap-2">
                 <FileCheck2 className="w-4 h-4 text-mukanda-emerald shrink-0 mt-0.5" />
-                <span>Sumário Executivo e Relatórios de Ponto de Situação e Evolução.</span>
+                <span>Estado de execução de cada pacote de trabalho e entregáveis concluídos.</span>
               </li>
               <li className="flex items-start gap-2">
                 <FileCheck2 className="w-4 h-4 text-mukanda-emerald shrink-0 mt-0.5" />
@@ -166,8 +169,8 @@ export default function TransparenciaPage() {
                 </h3>
                 <p className="sm:col-span-6 text-[0.8125rem] leading-relaxed text-ink-soft">{pt.desc}</p>
                 <span className="sm:col-span-2 sm:text-right">
-                  <span className="inline-flex items-center gap-1.5 text-2xs font-medium text-mukanda-emerald">
-                    <span className="w-1.5 h-1.5 rounded-full bg-mukanda-emerald" aria-hidden />
+                  <span className="inline-flex items-center gap-1.5 text-2xs font-medium text-ink-muted">
+                    <span className="w-1.5 h-1.5 rounded-full bg-line-strong" aria-hidden />
                     {pt.status}
                   </span>
                 </span>
