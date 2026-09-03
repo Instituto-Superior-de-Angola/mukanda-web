@@ -10,43 +10,43 @@ export default function QuestionariosPage() {
   const [selectedSurvey, setSelectedSurvey] = useState<'populacao' | 'escolas' | 'empresas'>('populacao');
   const { dict } = useTranslation();
 
+  // A estrutura detalhada dos instrumentos — secções, número de itens e códigos
+  // internos — não é publicada antes da recolha: divulgá-la permitiria preparar
+  // respostas aos itens de desempenho e comprometeria a validade da linha de base.
+  // O protocolo metodológico completo é depositado com as publicações científicas.
   const surveys = {
     populacao: {
-      title: "Inquérito Populacional de Literacia Digital (WP1)",
-      target: `População Geral (N=1.500) • ${dict.common.luanda}, ${dict.common.huila} e ${dict.common.uige}`,
-      code: "INQ-WP1-POP-2026",
+      title: "Inquérito populacional de literacia digital (WP1)",
+      target: `População geral • ${dict.common.luanda}, ${dict.common.huila} e ${dict.common.uige}`,
       estimatedTime: "20 a 25 minutos",
-      sections: [
-        { name: "Secção A", title: "Caracterização Sociodemográfica & Acesso a Equipamentos", items: 8 },
-        { name: "Secção B", title: "Padrões de Uso da Internet, Operadoras e Redes Sociais", items: 10 },
-        { name: "Secção C", title: "Auto-Avaliação nas 5 Dimensões AngoComp (Escala Likert 1-5)", items: 25 },
-        { name: "Secção D", title: "Mini-Desafios de Desempenho e Filtragem de Fake News", items: 6 },
-        { name: "Secção E", title: "Segurança Digital, Incidentes de Burla e Confiança em Serviços", items: 7 }
-      ]
+      dominios: [
+        "Caracterização sociodemográfica e acesso a equipamentos",
+        "Padrões de utilização da Internet e de serviços digitais",
+        "Auto-avaliação nas cinco dimensões do AngoComp",
+        "Itens de desempenho observado",
+        "Segurança digital e confiança em serviços em linha",
+      ],
     },
     escolas: {
-      title: "Inquérito a Docentes e Instituições de Ensino (WP1/WP3)",
-      target: "Professores do Ensino Secundário e Universitário (N=300)",
-      code: "INQ-WP1-EDU-2026",
+      title: "Inquérito a docentes e instituições de ensino (WP1)",
+      target: "Professores do ensino secundário e universitário",
       estimatedTime: "15 a 20 minutos",
-      sections: [
-        { name: "Secção A", title: "Infraestrutura Tecnológica da Instituição", items: 6 },
-        { name: "Secção B", title: "Integração de Recursos Digitais no Processo de Ensino", items: 12 },
-        { name: "Secção C", title: "Necessidades de Capacitação Docente AngoComp", items: 15 },
-        { name: "Secção D", title: "Avaliação de Competências de Criação de Conteúdo Pedagógico", items: 8 }
-      ]
+      dominios: [
+        "Infra-estrutura tecnológica da instituição",
+        "Integração de recursos digitais na prática lectiva",
+        "Necessidades de capacitação docente",
+      ],
     },
     empresas: {
-      title: "Inquérito de Necessidades do Mercado e Sector Privado",
-      target: "Gestores de RH, PMEs e Profissionais de TI (N=150)",
-      code: "INQ-WP1-EMP-2026",
+      title: "Inquérito de necessidades do mercado (WP1)",
+      target: "Responsáveis de recursos humanos e profissionais de TIC",
       estimatedTime: "15 minutos",
-      sections: [
-        { name: "Secção A", title: "Perfil Empresarial e Nível de Digitalização", items: 5 },
-        { name: "Secção B", title: "Lacunas de Competência Digital em Novos Contratados", items: 10 },
-        { name: "Secção C", title: "Demanda por Certificação Oficial AngoComp no Recrutamento", items: 6 }
-      ]
-    }
+      dominios: [
+        "Perfil da organização e nível de digitalização",
+        "Lacunas de competência digital identificadas no recrutamento",
+        "Procura por certificação de competências",
+      ],
+    },
   };
 
   const curr = surveys[selectedSurvey];
@@ -56,12 +56,12 @@ export default function QuestionariosPage() {
       <PageHeader
         kicker="Instrumentos de recolha · WP1"
         title="Questionários científicos do projecto"
-        lead="A estrutura metodológica dos inquéritos de linha de base é publicada antes da recolha de dados, permitindo escrutínio independente, réplica e reutilização por outras equipas de investigação."
+        lead="Os domínios temáticos dos inquéritos de linha de base são apresentados publicamente. O conteúdo dos itens e a estrutura detalhada dos instrumentos só são divulgados depois de concluída a recolha, para não comprometer a validade das medições — findo o trabalho de campo, são depositados com as publicações científicas, permitindo escrutínio independente e réplica."
         meta={[
           { label: 'Instrumentos', value: '3 inquéritos complementares' },
-          { label: 'Amostra total', value: '1.950 respondentes' },
-          { label: 'Escala', value: 'Likert 1–5 e itens de desempenho' },
-          { label: 'Licença', value: 'Reutilização com atribuição' },
+          { label: 'Pacote', value: 'WP1 — linha de base' },
+          { label: 'Modo', value: 'Aplicação assistida por inquiridor' },
+          { label: 'Divulgação', value: 'Após a recolha, com atribuição' },
         ]}
       />
 
@@ -73,9 +73,9 @@ export default function QuestionariosPage() {
           aria-label="Instrumentos de inquérito"
         >
           {([
-            ['populacao', 'Inquérito populacional (N=1.500)'],
-            ['escolas', 'Docentes e escolas (N=300)'],
-            ['empresas', 'Mercado e sector privado (N=150)'],
+            ['populacao', 'Inquérito populacional'],
+            ['escolas', 'Docentes e escolas'],
+            ['empresas', 'Mercado e sector privado'],
           ] as Array<[typeof selectedSurvey, string]>).map(([key, rotulo]) => (
             <button
               key={key}
@@ -98,14 +98,11 @@ export default function QuestionariosPage() {
         <div className="card p-6 sm:p-10 max-w-4xl mx-auto space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-line">
             <div>
-              <span className="text-xs font-mono font-semibold text-ink-muted uppercase tracking-wider">
-                Código do Instrumento: {curr.code}
-              </span>
               <h3 className="font-display font-semibold text-2xl text-ink mt-1">
                 {curr.title}
               </h3>
               <p className="text-xs sm:text-sm text-ink-soft mt-1 font-medium">
-                Público-Alvo: {curr.target} • Duração Média: {curr.estimatedTime}
+                Público-alvo: {curr.target} • Duração média: {curr.estimatedTime}
               </p>
             </div>
             <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-subtle text-ink-soft shrink-0 self-start sm:self-auto">
@@ -113,23 +110,18 @@ export default function QuestionariosPage() {
             </span>
           </div>
 
-          {/* Sections List */}
+          {/* Domínios temáticos */}
           <div className="space-y-3">
             <h4 className="font-display font-semibold text-sm text-ink uppercase tracking-wider">
-              Estrutura Modular de Perguntas
+              Domínios abrangidos
             </h4>
 
-            {curr.sections.map((sec, idx) => (
-              <div key={idx} className="p-4 rounded-lg bg-subtle border border-line flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-semibold px-2 py-1 rounded bg-white border border-line text-mukanda-indigo">
-                    {sec.name}
-                  </span>
-                  <span className="text-xs sm:text-sm font-semibold text-ink">
-                    {sec.title}
-                  </span>
-                </div>
-                <span className="text-xs text-ink-muted font-mono shrink-0">{sec.items} itens</span>
+            {curr.dominios.map((dominio, idx) => (
+              <div key={idx} className="p-4 rounded-lg bg-subtle border border-line flex items-center gap-3">
+                <span className="font-mono text-xs font-semibold px-2 py-1 rounded bg-white border border-line text-mukanda-indigo shrink-0">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-ink">{dominio}</span>
               </div>
             ))}
           </div>
@@ -138,7 +130,7 @@ export default function QuestionariosPage() {
           <div className="p-4 rounded-xl bg-subtle border border-line text-xs text-ink-soft flex items-start gap-2.5">
             <ShieldCheck className="w-5 h-5 text-mukanda-emerald shrink-0 mt-0.5" />
             <span>
-              Todos os questionários contêm termo de consentimento prévio (TCLE) aprovado pela comissão de ética da ACITE e são anonimizados no acto de submissão.
+              Todos os instrumentos incluem termo de consentimento livre e esclarecido e são submetidos à apreciação do Comité de Ética da ACITE antes de qualquer aplicação em campo. As respostas são anonimizadas no acto de recolha, nos termos da Lei n.º 22/11.
             </span>
           </div>
 

@@ -27,7 +27,7 @@ export default function SobrePage() {
     {
       name: "Comité Científico Internacional (CCI)",
       role: "Peritos Independentes & Painel Delphi",
-      institution: "Angola, União Europeia, CPLP & UNESCO",
+      institution: "Peritos externos independentes, a constituir",
       focus: "Validação Cruzada do AngoComp com o DigComp 2.2 e Padrões Globais",
       badge: "Validação Internacional"
     }
@@ -75,7 +75,7 @@ export default function SobrePage() {
               <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-subtle border border-line text-ink-soft">Versão Original (2023)</span>
               <h3 className="font-display font-semibold text-lg text-ink">Estudo de Nicho Exploratório</h3>
               <ul className="text-xs text-ink-soft space-y-2 list-disc pl-4">
-                <li>Âmbito restrito a profissionais do sector de segurança do Estado.</li>
+                <li>Âmbito restrito a um único grupo profissional.</li>
                 <li>Abordagem metodológica mista simples com duração de 12 meses.</li>
                 <li>Orçamento não quantificado e sem pilotagem provincial diversificada.</li>
               </ul>
@@ -148,58 +148,27 @@ export default function SobrePage() {
           </div>
         </div>
 
-        {/* 4. Financiamento Diversificado */}
+        {/* 4. Financiamento */}
         <section className="card p-6 sm:p-10">
           <p className="kicker">
             <span className="w-6 border-t border-mukanda-terracotta" aria-hidden />
             Sustentabilidade e recursos
           </p>
           <h2 className="mt-4 font-display font-semibold text-2xl sm:text-3xl text-ink">
-            Modelo de financiamento diversificado
+            Modelo de financiamento
           </h2>
           <p className="mt-3 prose-mukanda max-w-prose">
-            O orçamento global estimado é de <strong className="font-semibold text-ink">1.251.058.420 Kz</strong>,
-            repartido de forma explícita entre apoio nacional, cooperação internacional e contrapartida
-            institucional. A execução orçamental é reportada no painel de transparência.
+            O projecto assenta num modelo de financiamento diversificado, que combina apoio
+            público nacional à investigação, cooperação internacional, contrapartida
+            institucional da ACITE e mecenato do sector privado. Nenhuma fonte isolada é
+            determinante para a viabilidade do programa.
           </p>
-
-          <table className="mt-8 w-full text-left border-t border-line">
-            <caption className="sr-only">Repartição prevista das fontes de financiamento</caption>
-            <thead>
-              <tr className="text-2xs uppercase tracking-kicker text-ink-muted">
-                <th scope="col" className="py-2.5 font-semibold">Fonte</th>
-                <th scope="col" className="py-2.5 font-semibold hidden sm:table-cell">Natureza</th>
-                <th scope="col" className="py-2.5 font-semibold text-right">Peso</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-line">
-              {[
-                { fonte: 'FUNDECIT', natureza: 'MESCTI Angola', peso: 42.4 },
-                { fonte: 'União Europeia', natureza: 'Programa CAP4 / Diálogos', peso: 33.9 },
-                { fonte: 'ACITE (contrapartida)', natureza: 'Infraestrutura e corpo docente', peso: 11.0 },
-                { fonte: 'Sector privado', natureza: 'Telecomunicações', peso: 8.5 },
-                { fonte: 'UNESCO', natureza: 'Literacia e inclusão', peso: 4.2 },
-              ].map((linha) => (
-                <tr key={linha.fonte} className="text-[0.8125rem]">
-                  <th scope="row" className="py-3 font-medium text-ink">{linha.fonte}</th>
-                  <td className="py-3 text-ink-soft hidden sm:table-cell">{linha.natureza}</td>
-                  <td className="py-3">
-                    <div className="flex items-center justify-end gap-3">
-                      <span className="hidden sm:block w-32 h-1.5 bg-subtle rounded-full overflow-hidden" aria-hidden>
-                        <span
-                          className="block h-full bg-mukanda-indigo rounded-full"
-                          style={{ width: `${linha.peso * 2}%` }}
-                        />
-                      </span>
-                      <span className="font-mono text-ink tabular w-14 text-right">
-                        {linha.peso.toLocaleString('pt-PT', { minimumFractionDigits: 1 })}%
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <p className="mt-3 prose-mukanda max-w-prose">
+            Os processos de candidatura encontram-se em preparação. A composição definitiva do
+            financiamento, os montantes contratados e a respectiva execução serão publicados
+            no painel de transparência à medida que forem formalizados, nos termos das
+            obrigações de reporte de cada entidade financiadora.
+          </p>
         </section>
 
         {/* CTA */}
