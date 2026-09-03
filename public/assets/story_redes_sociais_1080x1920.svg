@@ -26,7 +26,7 @@
 
   <!-- Brand Subheader -->
   <g transform="translate(80, 120)">
-    <text x="0" y="30" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#F59E0B" letter-spacing="3">ACITE • INSTITUTO SUPERIOR DE ANGOLA</text>
+    <text x="0" y="30" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="700" fill="#F59E0B" letter-spacing="3">ACADEMIA DE CIÊNCIAS SOCIAIS E TECNOLOGIAS</text>
     <text x="0" y="60" font-family="'Inter', sans-serif" font-size="14" font-weight="500" fill="#94A3B8">Iniciativa Estruturante de Literacia Digital</text>
   </g>
 
