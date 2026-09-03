@@ -34,12 +34,12 @@ export default function SobrePage() {
   ];
 
   const workPackages = [
-    { code: "WP1", title: "Diagnóstico Empírico de Linha de Base", focus: `Inquérito N=1.500 em ${dict.common.luanda}, ${dict.common.huila} e ${dict.common.uige}; calibração estatística inicial.` },
-    { code: "WP2", title: "Concepção do Quadro AngoComp", focus: "Método Delphi com 30 peritos, definição de 21 competências e 8 níveis de proficiência." },
-    { code: "WP3", title: "Formação de 120 Multiplicadores", focus: "Capacitação intensiva de formadores provinciais e criação de kits didácticos." },
-    { code: "WP4", title: "Pilotagem & Certificação de 2.500 Cidadãos", focus: "Ensaio quase-experimental N=600 e certificação em massa nas três tipologias territoriais." },
-    { code: "WP5", title: "Construção do Índice ILDA", focus: "Modelação psicométrica final e transferência institucional para o MESCTI e INE." },
-    { code: "WP6", title: "Gestão, FAIR Data & Auditoria", focus: "Coordenação executiva, repositório de dados abertos e publicação de 6 artigos indexados." }
+    { code: "WP1", title: "Diagnóstico de Linha de Base", focus: `Inquérito por amostragem probabilística em ${dict.common.luanda}, ${dict.common.huila} e ${dict.common.uige}, com componente qualitativa complementar.` },
+    { code: "WP2", title: "Construção e Validação do AngoComp", focus: "Painel Delphi com 25 especialistas, cinco dimensões em oito níveis de proficiência e tradução para três línguas nacionais." },
+    { code: "WP3", title: "Ensaio Comparado de Intervenções", focus: "Desenho quasi-experimental que compara três modalidades formativas com grupo de controlo, e follow-up a seis meses." },
+    { code: "WP4", title: "Escalamento Controlado e Certificação", focus: "Quatro Pólos AngoComp, formação de 120 multiplicadores e certificação de 2.500 cidadãos." },
+    { code: "WP5", title: "Índice de Literacia Digital de Angola", focus: "Índice compósito segundo o manual da OCDE, com aplicação nacional em parceria com o INE." },
+    { code: "WP6", title: "Gestão, Disseminação e Sustentabilidade", focus: "Coordenação executiva, repositório de dados abertos e transferência institucional dos instrumentos." }
   ];
 
   return (
@@ -51,7 +51,7 @@ export default function SobrePage() {
         meta={[
           { label: 'Proponente', value: 'ACITE — Academia de Ciências Sociais e Tecnologias' },
           { label: 'Investigador principal', value: 'Eng. Benone Marcos, PhD' },
-          { label: 'Execução', value: 'Julho 2026 – Julho 2029' },
+          { label: 'Execução', value: 'Setembro 2026 – Agosto 2030' },
           { label: 'Estrutura', value: 'Seis pacotes de trabalho (WP1–WP6)' },
         ]}
       />
@@ -82,13 +82,13 @@ export default function SobrePage() {
             </div>
 
             <div className="p-6 rounded-lg bg-surface border border-line border-l-2 border-l-mukanda-terracotta space-y-3">
-              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-mukanda-terracotta text-white">Versão Actual 2.0 (2026–2029)</span>
+              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-mukanda-terracotta text-white">Versão Actual 2.0 (2026–2030)</span>
               <h3 className="font-display font-semibold text-lg text-ink">Programa Estratégico Nacional</h3>
               <ul className="text-xs text-ink-soft space-y-2 list-disc pl-4">
                 <li>População geral de Angola com foco em 3 províncias: Luanda, Huíla e Uíge.</li>
                 <li>Certificação directa de 2.500 cidadãos e 120 formadores multiplicadores.</li>
                 <li>Adaptação do DigComp 2.2, painel Delphi e criação do Índice ILDA.</li>
-                <li>48 meses de execução com plano de dados abertos FAIR e financiamento diversificado.</li>
+                <li>48 meses de execução, com plano de gestão de dados FAIR e financiamento diversificado.</li>
               </ul>
             </div>
           </div>

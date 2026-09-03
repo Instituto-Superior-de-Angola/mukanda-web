@@ -54,7 +54,7 @@ export default function HomePage() {
       icon: Users,
       titulo: 'Trabalho colaborativo',
       texto:
-        'Painel Delphi com 30 peritos de Angola, União Europeia, CPLP e UNESCO; equipas provinciais e uma comunidade de prática aberta a instituições parceiras.',
+        'Painel Delphi com 25 especialistas nacionais e internacionais, equipas provinciais e uma comunidade de prática aberta a instituições parceiras.',
       href: '/recrutamento',
       accao: 'Colaborar com a equipa',
     },
@@ -134,7 +134,7 @@ export default function HomePage() {
                     ['Designação', `${dict.common.projectName} — AngoComp`],
                     ['Entidade proponente', dict.hero.proponentEntity],
                     ['Investigador principal', dict.hero.principalInvestigator],
-                    ['Duração', '48 meses · Julho 2026 – Julho 2029'],
+                    ['Duração', '48 meses · Setembro 2026 – Agosto 2030'],
                     ['Amostra da linha de base', dict.hero.sampleSize],
                     ['Territórios piloto', `${dict.common.luanda} · ${dict.common.huila} · ${dict.common.uige}`],
                     ['Pacotes de trabalho', 'WP1 a WP6'],

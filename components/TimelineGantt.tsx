@@ -4,90 +4,94 @@ import React from 'react';
 import { Calendar, CheckCircle2 } from 'lucide-react';
 
 export default function TimelineGantt() {
+  // Janelas, objectos e entregáveis conforme o capítulo 7 da proposta técnica.
+  // M1 = Setembro de 2026; M48 = Agosto de 2030.
+  // O progresso mantém-se a zero enquanto não houver execução apurada: uma
+  // percentagem inventada seria uma afirmação sem suporte documental.
   const workPackages = [
     {
       code: "WP1",
-      title: "Diagnóstico Empírico de Linha de Base",
-      period: "Mês 01 – Mês 09 (Julho 2026 – Março 2027)",
-      status: "Em Preparação / Submissão",
-      statusColor: "bg-amber-50 text-amber-900 border-amber-200",
-      leader: "Equipa de Metodologia & Estatística ACITE",
+      title: "Diagnóstico de Linha de Base",
+      period: "Mês 01 – Mês 09 (Setembro 2026 – Maio 2027)",
+      status: "Planeado",
+      statusColor: "bg-subtle text-ink border-line-strong",
+      leader: "Investigador Sénior — Sociologia",
       deliverables: [
-        "Inquérito Nacional de Base com N=1.500 amostras (Luanda, Huíla, Uíge)",
-        "Relatório psicométrico preliminar de lacunas de literacia digital",
-        "Base de dados anonimizada FAIR no Repositório Mukanda"
+        "Inquérito por amostragem probabilística em Luanda, Huíla e Uíge",
+        "Componente qualitativa por focus groups e entrevistas a informantes-chave",
+        "Relatório de linha de base revisto por pares"
       ],
-      progress: 15
+      progress: 0
     },
     {
       code: "WP2",
-      title: "Concepção do Quadro AngoComp & Método Delphi",
-      period: "Mês 07 – Mês 16 (Janeiro 2027 – Outubro 2027)",
+      title: "Construção e Validação do AngoComp",
+      period: "Mês 06 – Mês 15 (Fevereiro 2027 – Novembro 2027)",
       status: "Planeado",
       statusColor: "bg-subtle text-ink border-line-strong",
-      leader: "Comité Científico Internacional (CCI)",
+      leader: "Investigador Sénior — Ciências da Educação",
       deliverables: [
-        "Painel Delphi internacional com 30 peritos (Angola, UE, CPLP, UNESCO)",
-        "Documento de especificação do Quadro AngoComp com 21 competências e 8 níveis",
-        "Instrumento de auto-avaliação e testes baseados em desempenho"
+        "Painel Delphi com 25 especialistas, até atingir consenso",
+        "Quadro de competências em cinco dimensões e oito níveis (A1–C2)",
+        "Tradução cultural para Kimbundu, Umbundu e Kikongo, e validação psicométrica"
       ],
       progress: 0
     },
     {
       code: "WP3",
-      title: "Formação de 120 Formadores Multiplicadores",
-      period: "Mês 15 – Mês 26 (Setembro 2027 – Agosto 2028)",
+      title: "Ensaio Comparado de Intervenções",
+      period: "Mês 16 – Mês 30 (Dezembro 2027 – Fevereiro 2029)",
       status: "Planeado",
       statusColor: "bg-subtle text-ink border-line-strong",
-      leader: "Coordenação Pedagógica ACITE",
+      leader: "Investigador Sénior — Ciências da Educação",
       deliverables: [
-        "Manual do Formador AngoComp e kits pedagógicos multimédia",
-        "Formação intensiva de 120 formadores (50 Luanda, 35 Huíla, 35 Uíge)",
-        "Comunidade de prática online e rede de tutoria regional"
+        "Ensaio quasi-experimental com três modalidades formativas e grupo de controlo",
+        "Medições em pré-teste, pós-teste imediato e follow-up a seis meses",
+        "Relatório de eficácia identificando a modalidade a escalar"
       ],
       progress: 0
     },
     {
       code: "WP4",
-      title: "Pilotagem & Certificação de 2.500 Cidadãos",
-      period: "Mês 24 – Mês 38 (Junho 2028 – Agosto 2029)",
+      title: "Escalamento Controlado e Certificação",
+      period: "Mês 24 – Mês 42 (Agosto 2028 – Fevereiro 2030)",
       status: "Planeado",
       statusColor: "bg-subtle text-ink border-line-strong",
-      leader: "Equipas de Campo Provinciais",
+      leader: "Coordenador de Trabalho de Campo",
       deliverables: [
-        "Ensaio quasi-experimental com grupo de controlo (N=600)",
-        "Capacitação e certificação formal de 2.500 cidadãos nas 3 províncias",
-        "Avaliação de impacto socioeconómico pós-formação (6 meses)"
+        "Quatro Pólos AngoComp: três fixos e um móvel de cobertura rural",
+        "Formação de 120 formadores multiplicadores",
+        "Certificação de 2.500 cidadãos com credenciais verificáveis"
       ],
       progress: 0
     },
     {
       code: "WP5",
-      title: "Construção do Índice ILDA & Transferência de Políticas",
-      period: "Mês 36 – Mês 48 (Junho 2029 – Julho 2029)",
+      title: "Índice de Literacia Digital de Angola",
+      period: "Mês 30 – Mês 48 (Fevereiro 2029 – Agosto 2030)",
       status: "Planeado",
       statusColor: "bg-subtle text-ink border-line-strong",
-      leader: "Investigador Principal & MESCTI / INE",
+      leader: "Investigador Sénior — Ciências da Computação",
       deliverables: [
-        "Cálculo e publicação do 1.º Índice de Literacia Digital de Angola (ILDA)",
-        "Transferência tecnológica do motor de diagnóstico para o INE e MESCTI",
-        "Livro Branco de Recomendações de Política Pública para o Executivo"
+        "Índice compósito construído segundo o manual da OCDE",
+        "Aplicação em amostra nacional, em parceria com o INE",
+        "Duas edições publicadas do ILDA e transferência para o MESCTI"
       ],
       progress: 0
     },
     {
       code: "WP6",
-      title: "Gestão, Comunicação, FAIR Data & Auditoria",
-      period: "Mês 01 – Mês 48 (Transversal)",
-      status: "Activo / Transversal",
-      statusColor: "bg-blue-50 text-blue-900 border-blue-200",
-      leader: "Gabinete de Gestão do Projecto (ACITE)",
+      title: "Gestão, Disseminação e Sustentabilidade",
+      period: "Mês 01 – Mês 48 (transversal)",
+      status: "Planeado",
+      statusColor: "bg-subtle text-ink border-line-strong",
+      leader: "Investigador Principal",
       deliverables: [
-        "Publicação de 6 artigos científicos em revistas internacionais indexadas",
-        "Auditorias financeiras externas independentes semestrais",
-        "Portal público de transparência e repositório de dados abertos"
+        "Seis artigos em revistas indexadas, dos quais três em Q1 ou Q2",
+        "Repositório FAIR de microdados anonimizados",
+        "Plano de continuidade e transferência institucional dos instrumentos"
       ],
-      progress: 20
+      progress: 0
     }
   ];
 

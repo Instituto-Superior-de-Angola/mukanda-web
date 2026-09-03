@@ -103,7 +103,7 @@ export default function TransparenciaPage() {
             <div>
               <span className="kicker">Cronograma de execução</span>
               <h2 className="font-display font-semibold text-2xl sm:text-3xl text-ink">
-                Roteiro de Entregáveis (2026–2029)
+                Roteiro de Entregáveis (2026–2030)
               </h2>
             </div>
             <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-subtle border border-line text-ink-soft self-start sm:self-auto">
